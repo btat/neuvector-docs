@@ -22,11 +22,25 @@ In addition to monitoring predefined files/directories, users can add custom fil
 Important: NeuVector alerts, and does not block modifications to predefined files/directories or in system containers such as Kubernetes ones. Blocking is only an option for user configured custom files/directories for non-system containers. This is so that regular updates of system folder or sensitive configurations are not blocked unintentionally, resulting in erratic system behavior.
 
 The following files and directories are monitored by default:
-+ Executable files+ Sensitive setuid/setgid files+ System libraries, libc, pthread, ...+ Package installation, Debian/Ubuntu, RedHat/CentOS, Alpine+ Sensitive system files, /etc/passwd, /etc/hosts, /etc/resolv.conf …+ Running processes' executable filesThe following activities are monitored:+ Files, directories, symlinks (hard link and soft link) + created, deleted, modified (content change) and moved
++ Executable files
++ Sensitive setuid/setgid files
++ System libraries, libc, pthread, ...
++ Package installation, Debian/Ubuntu, RedHat/CentOS, Alpine
++ Sensitive system files, /etc/passwd, /etc/hosts, /etc/resolv.conf …
++ Running processes' executable files
+
+The following activities are monitored:
++ Files, directories, symlinks (hard link and soft link)
++ created, deleted, modified (content change) and moved
 
 Below is a list of the file system monitoring and what is monitored (container, host/node, and/or NeuVector enforcer container itself):
 
-+ /bin, /usr/bin, /usr/sbin, /usr/local/bin - container, enforcer+ Files of setuid and setgid attribute - container, host, enforcer+ Libraries: libc, pthread, ld-linux.* - container, host, enforcer+ Package installation: dpkg, rpm, apk - container, host, enforcer+ /etc/hosts, /etc/passwd, /etc/resolv.conf - container, host, enforcer+ Binaries of the running processes - container
++ /bin, /usr/bin, /usr/sbin, /usr/local/bin - container, enforcer
++ Files of setuid and setgid attribute - container, host, enforcer
++ Libraries: libc, pthread, ld-linux.* - container, host, enforcer
++ Package installation: dpkg, rpm, apk - container, host, enforcer
++ /etc/hosts, /etc/passwd, /etc/resolv.conf - container, host, enforcer
++ Binaries of the running processes - container
 
 #### Behavioral-learning based Allowed Applications in Discover Mode
 When in Discover mode, NeuVector can learn and whitelist applications ONLY for specified directories or files. To enable learning, a custom rule must be created and the Action must be set to Block, as described below.
@@ -34,17 +48,17 @@ When in Discover mode, NeuVector can learn and whitelist applications ONLY for s
 #### Creating Custom File/Directory Monitoring Rules
 Custom file access rules can be created for both custom user-defined Groups as well as auto-learned Groups.
 
-Users can add new entries for file/directory rules. 
+Users can add new entries for file/directory rules.
 + Filter: Configure the file/folder to be protected (wildcards are supported)
 + Set the recursive flag (if all files in the subdirectories are to be protected)
 + Select the action, Monitor or Block (see Actions below)
 + Enter allowed applications (see Note1 below)
 
-![FileRules](file_rules.png)
+![FileRules](/img/05.policy/07.filerules/file_rules.png)
 
 Actions:
 + Monitor file changes. Generate alerts (Notifications) for any changes
-+ Block unauthorized access. 
++ Block unauthorized access.
     - Service in Discover mode: the file access behavior is learned (the processes/applications that access the protected file) and added to the Allowed Applications.
     - Service in Monitor mode: unexpected file behavior is alerted.
     - Service in Protect mode: unexpected access (read, modify) is blocked. New file creation in protected folders will be blocked as well.
@@ -58,34 +72,34 @@ A container can inherit file access rule from multiple custom groups and user cr
 
 File access rules are prioritized in the order below if the file name conflicts with predefined access rules of auto learned group and rules inheritance of multiple groups.
 + File access rule with block access (highest order)
-+ File access rule with recursive enabled 
++ File access rule with recursive enabled
 + File access rule with recursive disable
 + User created file access rule other than predefined file access rules
 
 
 #### Examples
-Showing file access rule to protect /etc/hostname file of node-pod service and allow vi application to modify the file. 
-![FileRules](example1.png)
+Showing file access rule to protect /etc/hostname file of node-pod service and allow vi application to modify the file.
+![FileRules](/img/05.policy/07.filerules/example1.png)
 
 Showing file access rule to protect files under /var/opt/ directory recursively for modification as well reading. The Allowed Application python can have read and modify access to these files.
-![FileRules](example2.png)
+![FileRules](/img/05.policy/07.filerules/example2.png)
 
 Showing access rule that protects file /etc/passwd, which is one of the files covered predefined access rule in order to modify the file access action, for modification as well reading. This custom rule changes the default action of the predefined file access rule. The application Nano can have 'read and modify' access to these files. Must also add the Nano application (process) as an 'allow' rule in the process profile rule for this service to run Nano application inside the service (if it wasn't already whitelisted there), otherwise the process will be blocked by NeuVector.
-![FileRules](example3.png)
+![FileRules](/img/05.policy/07.filerules/example3.png)
 
 Showing that the application python was learned accessing file under /var/opt directory when service mode of node-pod was in Discover. This occurs only when the rule is set to Block and the service is in Discover mode.
-![FileRules](example4.png)
+![FileRules](/img/05.policy/07.filerules/example4.png)
 
 Showing predefined file access rules for the service node-pod.demo-nvqa. This can be viewed for this service by clicking the info icon “show predefined filters” in the right corner of the file access rule tab.
-![FileRules](predefined.png)
+![FileRules](/img/05.policy/07.filerules/predefined.png)
 
 Showing a sample security event in Notifications -> Security Events, alerted as File access denial when modification of the file /etc/hostname by the application python was denied due to a custom file access rule with block action.
-![FileRules](securityevent.png)
+![FileRules](/img/05.policy/07.filerules/securityevent.png)
 
 #### Other Responses
 If other special mitigations, responses, or alerts are desired for File System Violations, a Response Rule can be created. See the example below and the section Run-Time Security Policy -> Response Rules for more details.
 
-![FileResponse](file-response1.png)
+![FileResponse](/img/05.policy/07.filerules/file-response1.png)
 
 ###Split Mode File Protections
 Container Groups can have Process/File rules in a different mode than Network rules, as described [here](/policy/modes#split-policy-mode).

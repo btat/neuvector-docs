@@ -4,20 +4,20 @@ taxonomy:
     category: docs
 ---
 
-### Reporting 
+### Reporting
 Reports can be viewed and downloaded from several menus in the NeuVector console. The Dashboard displays a security summary which can be downloaded as a pdf. The pdf download can be filtered for a namespace if desired.
 
-![Dashboard](3_0_Dashboard.png)
+![Dashboard](/img/07.reporting/01.reporting/3_0_Dashboard.png)
 
-Vulnerability scanning and CIS benchmark results for registries, containers, nodes and platforms can also be downloaded as CSV files from their respective menus in the Assets menu sections. 
+Vulnerability scanning and CIS benchmark results for registries, containers, nodes and platforms can also be downloaded as CSV files from their respective menus in the Assets menu sections.
 
 The Security Risks menu provides advanced correlation, filtering and reporting for vulnerabilities and compliance checks. Filtered views can be exported in CSV or PDF formats.
 
-![Reports](security_risks_4.png)
+![Reports](/img/07.reporting/01.reporting/security_risks_4.png)
 
 Compliance reports for PCI, HIPAA, GDPR and other regulations can be filtered, viewed and exported by selecting the regulation in the advanced filter popup in Security Risks -> Compliance.
 
-![Reports](gdpr_report.png)
+![Reports](/img/07.reporting/01.reporting/gdpr_report.png)
 
 ####Event Reporting
 All events such as security, admin, admission, scanning, and risk are logged by NeuVector and can be also viewed in the Console in the Notifications menu. See below for details.
@@ -74,7 +74,7 @@ nc -l -p 8514 -o syslog-dump.hex | tee syslog-messages.txt
 Captures messages on screen, logs them to file and logs a hexdump.
 
 #### Integration with Splunk
-You can integrate with Splunk using SYSLOG to capture container security events and report in Splunk. 
+You can integrate with Splunk using SYSLOG to capture container security events and report in Splunk.
 
 
 ### Notifications and Logs
@@ -88,21 +88,21 @@ You can also display the logs using the CLI or REST API.
 
 Violations are connections that violate the whitelist Rules or match a blacklist Rule. Network violations are captured and source IPs can be investigated further. Whitelist network  violation events show up as "Implicit Deny Rule is Violated" to indicate the network connection did not match any whitelist rule.
 
-![Events](Security_Events321.png)
+![Events](/img/07.reporting/01.reporting/Security_Events321.png)
 
 In this view, you can review network, process, and file events and easily add a whitelist rule for false positives by clicking the Review Rule button. The Advanced Filter enables you to select the type of event to display.
 
-![AddRule](security_events_addrule.png)
+![AddRule](/img/07.reporting/01.reporting/security_events_addrule.png)
 
 NeuVector also continuously monitors all containers for know attacks such as DNS, DDoS, HTTP-smuggling, tunneling etc. When an attack is detected it is logged here and blocked (if container/service is set to protect), and the packet is automatically captured. You can view the packet details, for example:
 
-![Capture](ping_capture.png)
+![Capture](/img/07.reporting/01.reporting/ping_capture.png)
 
 <strong>Add New Rules for Security Events</strong>
 
-You can easily add rules (Security Policy) to allow or deny the detected event by selecting the Review Rule button and deploying a new rule. 
+You can easily add rules (Security Policy) to allow or deny the detected event by selecting the Review Rule button and deploying a new rule.
 
-![ReviewRule](security_events_review.png)
+![ReviewRule](/img/07.reporting/01.reporting/security_events_review.png)
 
 This is useful if false positives occur or a network/process behavior should have been discovered but did not occur during the Discover mode.
 

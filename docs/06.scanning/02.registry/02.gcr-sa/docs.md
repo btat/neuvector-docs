@@ -4,34 +4,38 @@ taxonomy:
     category: docs
 ---
 
-### Google GCR - Authentication/Scanning with GCP Service AccountsIt is a best practice to not depend on user attributed accounts for integrations.  GCP supports using a service account to access GCR.  Here are the steps to enable a service account for GCR and use it to trigger repository scans from NeuVector. 
+### Google GCR - Authentication/Scanning with GCP Service Accounts
+
+
+It is a best practice to not depend on user attributed accounts for integrations.  GCP supports using a service account to access GCR.  Here are the steps to enable a service account for GCR and use it to trigger repository scans from NeuVector.
+
 Start in NeuVector, where one first sets up a new registry:
 
-![GCR](gcr1.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr1.png)
 
-By selecting Google Container Registry as the repo type, this panel is customized to accept the input required to use your GCR. 
+By selecting Google Container Registry as the repo type, this panel is customized to accept the input required to use your GCR.
 
 1. Name - Here’s where you give this particular repo entry a name of your choosing. It’s merely to identify it in the NeuVector interface later on.
 2. Registry - This is the first place where you’ll want to be sure the correct data is collected from your GCR instance. While the example of https://gcr.io is the most common, we will want to be sure it accurately reflects how your GCR was set up in GCP. It might be https://us.gcr.io for example. We’ll go check it in the next section.
-3. JSON Key - As is pretty self-evident, this will be a JSON-formatted key. And, as you’re probably seeing a pattern set up for, we’ll be finding that via GCP. 
+3. JSON Key - As is pretty self-evident, this will be a JSON-formatted key. And, as you’re probably seeing a pattern set up for, we’ll be finding that via GCP.
 4. Filter - Be mindful that you will likely need to replace any filters here with the actual name of the repo. Again, that’s in the GCR interface.
  
-![GCR](gcr2.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr2.png)
 
-Now let’s head on over to that GCR screen in GCP. Much of what we need is right here on this page. 
+Now let’s head on over to that GCR screen in GCP. Much of what we need is right here on this page.
 
 A. See the “gcr.io” under Hostname? That’s what belongs in item #2, Registry in the NeuVector interface. (Don’t forget the https:// part)
 B. The ID of the repo is actually under the top level project. This is what you will be using in #3, Filter. See example of env-demo below.
 
-![GCR](gcr3.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr3.png)
 
 The JSON Key leads us to explore another very important step, and that takes us to the IAM & Admin section of GCP where we will create (or confirm the setting of) a Service Account. See below:
 
-![GCR](gcr4.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr4.png)
 
 Once you enter the data for the first step of creating a service account, you need to press the “CREATE” button to get step 2 to be willing to accept input.
 
-![GCR](gcr5.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr5.png)
 
 Be sure to select Basic —> Viewer for the access. If you have an existing service account, ensure that the access is set this way. (Hint: Even access permissions that appear to be more powerful don’t seem to allow for proper access. Don't skip this step.
 
@@ -39,11 +43,11 @@ Once you’ve done this step, you can breeze past Step 3 and proceed with creati
 
 If you don’t immediately land on the info panel for your new service account, be sure to go there on the Service Accounts list. See figure 5 below.
 
-![GCR](gcr6.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr6.png)
 
 Click “ADD KEY” —> “Create New Key”
 
-![GCR](gcr7.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr7.png)
 
 As you have already concluded, JSON is the go-to here. Selecting “CREATE” will result in a file that you can download in your browser. The contents of this file should be pasted into the 3, JSON Key field in NeuVector; see figure 1.
 
@@ -55,11 +59,11 @@ $ gcloud services enable artifactregistry.googleapis.com
 
 Or you can use the GCP gui. Head to “API Library” and search for “Artifact Registry API” and ensure it is turned on for your project. See figure 7.
 
-![GCR](gcr8.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr8.png)
 
 You should be set! See figure 8 below for a properly-configured registry using the data from our example:
 
-![GCR](gcr9.png)
+![GCR](/img/06.scanning/02.registry/02.gcr-sa/gcr9.png)
 
 
 

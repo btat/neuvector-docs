@@ -11,7 +11,7 @@ taxonomy:
 + Update all images to remediate high [CVE-2022-28391](https://nvd.nist.gov/vuln/detail/CVE-2022-28391) in busybox (alpine).
 
 #### 4.4.4-s2 Security Patch March 2022
-+ Update to remediate CVE-2022-0778, an OpenSSL vulnerability found in the Alpine base image used by NeuVector images. Short description: It is possible to trigger an infinite loop by crafting a certificate that has invalid elliptic curve parameters. Since certificate parsing happens before verification of the certificate signature, any process that parses an externally supplied certificate may be subject to a denial of service attack. More details can be found at the following links. 
++ Update to remediate CVE-2022-0778, an OpenSSL vulnerability found in the Alpine base image used by NeuVector images. Short description: It is possible to trigger an infinite loop by crafting a certificate that has invalid elliptic curve parameters. Since certificate parsing happens before verification of the certificate signature, any process that parses an externally supplied certificate may be subject to a denial of service attack. More details can be found at the following links.
   - https://security.alpinelinux.org/vuln/CVE-2022-0778
   - https://www.suse.com/security/cve/CVE-2022-0778.html
   - https://nvd.nist.gov/vuln/detail/CVE-2022-0778
@@ -129,14 +129,14 @@ taxonomy:
 ##### Enhancements
 + Display node labels under Assets -> Nodes.
 + Display statistics for the Controller in Assets -> System Components
-+ Report if a vulnerability is in the base image layers in image scan when using the REST API to scan images. The base image must be identified in the api call, as in the example below. 
++ Report if a vulnerability is in the base image layers in image scan when using the REST API to scan images. The base image must be identified in the api call, as in the example below.
 ```
 curl -k -H "Content-Type: application/json" -H "X-Auth-Token: $_TOKEN_" -d '{"request": {"registry": "https://registry.hub.docker.com/", "repository": "garricktam/debian", "tag": "latest", "scan_layers": false, "base_image": "2244...../nodejs:3.2......"}}' "https://$RESTURL/v1/scan/repository"
 {noformat}
 ```
 
 Limitations:
-If the image to be scanned is a remote image, with "registry" specified, the base image must also be a remote image, and the name must start with http or https. If the image to be scanned is a local image, then the base image must also be a local image as well.
+If the image to be scanned is a remote image, with "registry" specified, the base image must also be a remote image, and the name must start with http or https.If the image to be scanned is a local image, then the base image must also be a local image as well.
 For example,
 ```
 {"request": {"repository": "neuvector/manager", "tag": "4.0.2", "scan_layers": true, "base_image": "alpine:3.12.0"}}
@@ -155,7 +155,7 @@ For example,
 + Add ability to import Group Policy (CRD file yaml format) from console to support non-Kubernetes environments. Important: Imported CRDs from console do NOT get classified and displayed as CRD rules. They can be edited through the console, unlike CRD's applied through Kubernetes.
 + Support multiple web hook endpoints. In Settings -> Configuration, multiple web hook endpoints can be added. In Response Rules, creating a rule enables user to select which end point(s) to notify by web hook.
 + Support (multiple web hook) configuration in Federated rules.
-+ Support JSON format for web hooks. Can now configure JSON, key-value pairs, or Slack as web hook formats when creating a web hook. 
++ Support JSON format for web hooks. Can now configure JSON, key-value pairs, or Slack as web hook formats when creating a web hook.
 + Support custom user roles for map to a namespace user. Directory integration support mapping of groups to roles, with role being able to limit to namespace(s). Limitation: If the user is in multiple groups, the role will be 'first matched' group's role assigned. Please the order of configuration for proper behavior.
 + Download list of external IPs for egress connections. Added ability to download report/CSV from the Dashboard page under section Ingress and Egress Exposure.
 + Support cve-medium criteria in Response Rules.
@@ -224,10 +224,10 @@ For example,
 + Nodes detected as workload resulting in implicit violations.
 
 ##### Other
-+ Jenkins Plugin enhancements: 
-  - Overwrite vulnerability severity by score.  
++ Jenkins Plugin enhancements:
+  - Overwrite vulnerability severity by score.
   - Add error messages to the JAVA exceptions hudson.AbortException.
-+ Update Helm chart to 1.7.1. 
++ Update Helm chart to 1.7.1.
 
 Please see release notes section [Integrations & Other Components](/releasenotes/other) for details.
 
@@ -253,14 +253,14 @@ In a Kubernetes cluster, an application can be exposed to the outside of the clu
 In order to preserve the original source IP address, the user needs to add the following line to the exposed services, in the 'spec' section of the external facing load balancer or ingress controller. (Ref: https://kubernetes.io/docs/tutorials/services/source-ip/)
 
 "externalTrafficPolicy":"Local"
- 
+
 Many implementations of LoadBalancer services and Ingress controllers will add the X-FORWARDED-FOR line to the HTTP request header to communicate the real source IP to the backend applications. In 4.1.0 release, we added a feature to recognize this set of HTTP headers, identify the original source IP and enforce the policy according to that.
 
 This improvement created some unexpected issues in some setup. If the above line has been added to the exposed services and NeuVector network policies have been created in a way that expect the network connections are coming from internal proxy/ingress services, because we now identify the connections are from "external" to the cluster, normal application traffic might trigger alerts or get blocked if the applications are put in "Protect" mode.
 
 In 4.1.2, switch is added to disable this feature. Disabling it tells NeuVector not to identify that the connection is from "external" using X-FORWARDED-FOR headers. By default this is enabled, and the X-FORWARDED-FOR header is used in policy enforcement. To disable it, go to Settings -> Configuration, and disable the "X-Forwarded-For based policy match" setting.
 
-![xff_behavior](xff.png)
+![xff_behavior](/img/14.releasenotes/03.4x/xff.png)
 
 #### 4.1.1 January 2021
 
@@ -281,8 +281,8 @@ In 4.1.2, switch is added to disable this feature. Disabling it tells NeuVector 
 + Stand alone scanner now submits scan result using REST API. See below for Scanner Details.
 + Detect and block Man-in-the-middle attack reported in CVE-2020-8554.
 + Add support for metered (usage based) licensing models.
-+ Remove step for creation of CRDs (e.g. NvSecurityRule) from the sample deployment yamls for Kubernetes and Openshift. This is not required (Controller will create these automatically). Helm deployment will also take care of these. 
- 
++ Remove step for creation of CRDs (e.g. NvSecurityRule) from the sample deployment yamls for Kubernetes and Openshift. This is not required (Controller will create these automatically). Helm deployment will also take care of these.
+
 ##### Bug Fixes
 + Improve high memory usage on controller and enforcer.
 + Error returned when trying to configure a registry filter. Allow wildcard be used any place in the repo/tag filter.
@@ -327,7 +327,7 @@ docker run --name neuvector.scanner --rm -e SCANNER_REPOSITORY=ubuntu -e SCANNER
 + Console - the container list page Assets -> Containers should allow the window separators to be dragged to be resized.
 + Add admission control checks for pod share host namespaces. Allow user to choose to prevent pod from sharing host's Network, IPC, PID namespaces. See below for more details.
 + Ability to export list of containers running in privileged or 'runasroot'.
-+ In Notifications -> Security Events, enable the display of information about the event attributes easily without switching screens.  
++ In Notifications -> Security Events, enable the display of information about the event attributes easily without switching screens.
 
 ##### Bug Fixes
 + Issue with jumbo frames (enabled on some public clouds). Symptom: the main prometheus application URI /graph becomes inaccessible when the prometheus group is placed into Protect mode.

@@ -23,7 +23,7 @@ img src=javascript
 
 
 Here are other simple examples:
-![owasp](owasp_top10_dlp.png)
+![owasp](/img/05.policy/10.threats/owasp_top10_dlp.png)
 
 ####Built-In Threat Detection
 NeuVector also has built-in detection of other network threats such as SQL Injection attacks, DDoS (e.g. Ping Death), and tunneling attacks. For SQL injection attacks, NeuVector inspects the network connection (SQL protocol) between the front end and the sql database pod, reducing false positives and increasing accuracy.

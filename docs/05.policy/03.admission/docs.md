@@ -7,28 +7,35 @@ taxonomy:
 ### Controlling Image / Container Deployments
 
 With Admission Control integration with orchestration platforms such as Kubernetes and OpenShift, NeuVector is playing an important role within the orchestration platform’s deployment pipeline. Whenever a cluster resource such as Deployment is created, the request from the cluster apiserver will be passed to one of the NeuVector Controllers to determine if it should be allowed to deploy or denied based on the user-defined Admission Control rules prior to creating the cluster resource. The policy decision NeuVector makes will be passed back to cluster apiserver for enforcement.
-This feature is supported in Kubernetes 1.9+ and Openshift 3.9+. Before using the Admission Control function in NeuVector, there are two values that need to be set in the --admission-control argument passed to the cluster apiserver. Please see Kubernetes and Openshift sections below for configuration.
 
-#### KubernetesThe ValidatingAdmissionWebhook and MutatingAdmissionWebhook plugins are enabled by default.
+This feature is supported in Kubernetes 1.9+ and Openshift 3.9+. Before using the Admission Control function in NeuVector, there are two values that need to be set in the --admission-control argument passed to the cluster apiserver. Please see Kubernetes and Openshift sections below for configuration.
+
+#### Kubernetes
+The ValidatingAdmissionWebhook and MutatingAdmissionWebhook plugins are enabled by default.
 
 Check if admissionregistration.kubernetes.io/v1beta1 is enabled
-```$ kubectl api-versions | grep admissionregistration
+```
+$ kubectl api-versions | grep admissionregistration
 admissionregistration.k8s.io/v1beta1
 ```
-#### Openshift
+
+#### Openshift
 The ValidatingAdmissionWebhook and MutatingAdmissionWebhook plugins are NOT enabled by default. Please see the examples in the OpenShift deployment sections for instructions on how to enable these. A restart of the OpenShift api and controllers services is required.
 
 Check if admissionregistration.kubernetes.io/v1beta1 is enabled
-```$ oc api-versions | grep admissionregistration
+```
+$ oc api-versions | grep admissionregistration
 admissionregistration.k8s.io/v1beta1
 ```
 
 ### Enabling Admission Control (Webhook) in NeuVector
 The Admission Control feature is disabled by default. Please go to Policy -> Admission Control page to enable it in the NeuVector console.
 
-![Enable](ac_enable.png)
-Once the Admission Control feature is enabled successfully, the following ValidatingWebhookConfiguration resource will be created automatically. To check it:
-```$ kubectl get ValidatingWebhookConfiguration neuvector-validating-admission-webhook
+![Enable](/img/05.policy/03.admission/ac_enable.png)
+
+Once the Admission Control feature is enabled successfully, the following ValidatingWebhookConfiguration resource will be created automatically. To check it:
+```
+$ kubectl get ValidatingWebhookConfiguration neuvector-validating-admission-webhook
 ```
 Sample output:
 ```
@@ -36,13 +43,13 @@ NAME                                     CREATED AT
 neuvector-validating-admission-webhook   2019-03-28T00:05:09Z
 ```
 
-The most important information in ValidatingWebhookConfiguration resource for NeuVector is cluster resources. Currently once a cluster resource such as Deployment NeuVector registered is created, the request will be sent from orchestration platform apiserver to one of the NeuVector Controllers to determine if it should be allowed or denied based on the user-defined rules in NeuVector Policy -> Admission Control page. 
+The most important information in ValidatingWebhookConfiguration resource for NeuVector is cluster resources. Currently once a cluster resource such as Deployment NeuVector registered is created, the request will be sent from orchestration platform apiserver to one of the NeuVector Controllers to determine if it should be allowed or denied based on the user-defined rules in NeuVector Policy -> Admission Control page.
 
 If the resource deployment is denied, an event will be logged in Notifications.
 
 To test the Kubernetes connection for the client mode access, go to Advanced Setting.
 
-![Advanced](ac_advanced.png)
+![Advanced](/img/05.policy/03.admission/ac_advanced.png)
 
 For special cases, the URL access method using the NodePort service may be required.
 
@@ -56,14 +63,14 @@ NeuVector supports many criteria for creating an Admission Control Rule. These i
 + Environment variables with secrets is an example of a criterion using the deployment yaml scan.
 + Labels and Environment variables are examples of criteria which will use BOTH image and deployment yaml scans results  (logical OR) to determine matches.
 
-![Criteria](adm_control_criteria.png)
+![Criteria](/img/05.policy/03.admission/adm_control_criteria.png)
 
 After the criterion is selected, the possible Operators will be displayed. Click the ‘+’ button to add each criterion.
 
 <strong>Using Multiple Criteria in a Single Rule</strong>
 The matching logic for multiple criteria in one admission control rule is:
 + For different criteria types within a single rule, apply 'and'
-+ For multiple criteria of same type (e.g. multiple namespaces, registries, images), 
++ For multiple criteria of same type (e.g. multiple namespaces, registries, images),
     - Apply 'and' for all negative matches("not contains any", "is not one of") until the first positive match;
     - After the first positive match, apply 'or'
 
@@ -82,7 +89,7 @@ spec:
         app: iperfserver
  ```
 The rule to match would be:
-![Admission](ac_label.png)
+![Admission](/img/05.policy/03.admission/ac_label.png)
 
 ####Example with Matching Environment Variables with Secrets
 ```
@@ -125,7 +132,7 @@ spec:
       restartPolicy: Always
 ```
 The Matching rule would be:
-![Admission](ac_environment.png)
+![Admission](/img/05.policy/03.admission/ac_environment.png)
 
 
 
@@ -133,16 +140,25 @@ The Matching rule would be:
 The following criteria are related to the results in NeuVector Assets > Registry scan page:
 
 Image, imageScanned, cveHighCount, cveMediumCount, Image compliance violations, cveNames and others.
-Before NeuVector performs the match against the Admission Control rules, NeuVector retrieves the image information (For example, 10.1.127.3:5000/neuvector/toolbox/iperf:latest) from the cluster apiserver
+
+Before NeuVector performs the match against the Admission Control rules, NeuVector retrieves the image information (For example, 10.1.127.3:5000/neuvector/toolbox/iperf:latest) from the cluster apiserver
 (Please refer to Request from apiserver section below). The image is composed by registry server (https://10.1.127.3:5000), repository (neuvector/toolbox/iperf) and tag (latest).
-NeuVector uses this information to match the results in NeuVector Assets -> Registry scan page and collects the corresponding information such as cve name, cve high or medium count etc. Image compliance violations are considered any image which has secrets or setuid/setgid violations.If users are using the image from docker registry to create a cluster resource, normally the registry server information is empty or docker.io and currently NeuVector is using the following hard-coded registry servers to match the registry scan result instead of empty or docker.io string. Of course, if there are more other than the following supported docker registry servers defined in the registry scan page, NeuVector is unable to get the registry scan results successfully.
-If users are using the built-in image such as alpine or ubuntu from the docker registry, there is a hidden organization name called library. When you look at the results for docker build-in image in NeuVector Assets > Registry scan page, the repository name will be library/alpine or library/ubuntu. Currently NeuVector assumes there is only one hidden library organization name in docker registry. If there is more  than one, NeuVector is unable to get the registry scan results successfully as well.The above limitation could also apply on other type of docker registry servers if any.
+
+NeuVector uses this information to match the results in NeuVector Assets -> Registry scan page and collects the corresponding information such as cve name, cve high or medium count etc. Image compliance violations are considered any image which has secrets or setuid/setgid violations.
+If users are using the image from docker registry to create a cluster resource, normally the registry server information is empty or docker.io and currently NeuVector is using the following hard-coded registry servers to match the registry scan result instead of empty or docker.io string. Of course, if there are more other than the following supported docker registry servers defined in the registry scan page, NeuVector is unable to get the registry scan results successfully.
+
+If users are using the built-in image such as alpine or ubuntu from the docker registry, there is a hidden organization name called library. When you look at the results for docker build-in image in NeuVector Assets > Registry scan page, the repository name will be library/alpine or library/ubuntu. Currently NeuVector assumes there is only one hidden library organization name in docker registry. If there is more  than one, NeuVector is unable to get the registry scan results successfully as well.
+The above limitation could also apply on other type of docker registry servers if any.
 
 #### Creating Custom Criteria Rules
 Users can create a customized criterion to be used to allow or block deployments based on common objects found in the image yaml (scanned upon deployment). Select the object to be used, for example annotationsKey and the matching value, for example neuvector to create the criterion. It is also recommended to use additional criteria to further target the rule, such as namespace, PSP/PSA, CVE conditions etc.
 
-![admission](custom_admission.png)### Admission Control Modes
-There are two modes NeuVector supports - Monitor and Protect.+ Monitor: there is an alert message in the event log if a decision is denied. In this case, the cluster apiserver is allowed to create a resource successfully. Note: even if the rule action is Deny, in Monitor mode this will only alert.
+![admission](/img/05.policy/03.admission/custom_admission.png)
+
+
+### Admission Control Modes
+There are two modes NeuVector supports - Monitor and Protect.
++ Monitor: there is an alert message in the event log if a decision is denied. In this case, the cluster apiserver is allowed to create a resource successfully. Note: even if the rule action is Deny, in Monitor mode this will only alert.
 + Protect: this is an inline protection mode. Once a decision is denied, the cluster resource will not be able to be created successfully, and an event will be logged.
 
 ### Admission Control Rules
@@ -160,20 +176,28 @@ The primary (master) cluster can scan a registry/repo designated as a federated 
 
 If experiencing errors and you have access to the master node you can inspect the kube-apiserver log to search for admission webhook events. Examples:
 
-```
+
+```
 W0406 13:16:49.012234 1 admission.go:236] Failed calling webhook, failing open neuvector- validating-admission-webhook.neuvector.svc: failed calling admission webhook "neuvector-validating- admission-webhook.neuvector.svc": Post https://neuvector-svc-admission- webhook.neuvector.svc:443/v1/validate/1554514310852084622-1554514310852085078?timeout=30s: dial tcp: lookup neuvector-svc-admission-webhook.neuvector.svc on 8.8.8.8:53: no such host
 ```
-The above log indicates that the cluster kube-apiserver is unable to send the request to the NeuVector webhook successfully because it fails to resolve the neuvector-svc-admission-webhook.neuvector.svc name.
 
-```W0405 23:43:01.901346 1 admission.go:236] Failed calling webhook, failing open neuvector- validating-admission-webhook.neuvector.svc: failed calling admission webhook "neuvector-validating- admission-webhook.neuvector.svc": Post https://neuvector-svc-admission-webhook.neuvector.svc:443/v1/validate/1554500399933067744-1554500399933068005?timeout=30s: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+The above log indicates that the cluster kube-apiserver is unable to send the request to the NeuVector webhook successfully because it fails to resolve the neuvector-svc-admission-webhook.neuvector.svc name.
+
 ```
-The above log indicates that the cluster kube-apiserver is unable to send the request to the NeuVector webhook successfully because it resolves the neuvector-svc-admission-webhook.neuvector.svc name with the wrong IP address. It could also indicate a network connectivity or firewall issue between api-server and the controller nodes.
+W0405 23:43:01.901346 1 admission.go:236] Failed calling webhook, failing open neuvector- validating-admission-webhook.neuvector.svc: failed calling admission webhook "neuvector-validating- admission-webhook.neuvector.svc": Post https://neuvector-svc-admission-webhook.neuvector.svc:443/v1/validate/1554500399933067744-1554500399933068005?timeout=30s: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+```
 
-```W0406 01:14:48.200513 1 admission.go:236] Failed calling webhook, failing open neuvector- validating-admission-webhook.xyz.svc: failed calling admission webhook "neuvector-validating- admission-webhook.xyz.svc": Post https://neuvector-svc-admission- webhook.xyz.svc:443/v1/validate/1554500399933067744-1554500399933068005?timeout=30s: x509: certificate is valid for neuvector-svc-admission-webhook.neuvector.svc, not neuvector-svc-admission- webhook.xyz.svc```
+The above log indicates that the cluster kube-apiserver is unable to send the request to the NeuVector webhook successfully because it resolves the neuvector-svc-admission-webhook.neuvector.svc name with the wrong IP address. It could also indicate a network connectivity or firewall issue between api-server and the controller nodes.
+
+```
+W0406 01:14:48.200513 1 admission.go:236] Failed calling webhook, failing open neuvector- validating-admission-webhook.xyz.svc: failed calling admission webhook "neuvector-validating- admission-webhook.xyz.svc": Post https://neuvector-svc-admission- webhook.xyz.svc:443/v1/validate/1554500399933067744-1554500399933068005?timeout=30s: x509: certificate is valid for neuvector-svc-admission-webhook.neuvector.svc, not neuvector-svc-admission- webhook.xyz.svc
+```
 
 The above log indicates that the cluster kube-apiserver can send the request to the NeuVector webhook successfully but the certificate in caBundle is wrong.
 
-```W0404 23:27:15.270619 1 admission.go:236] Failed calling webhook, failing open neuvector- validating-admission-webhook.neuvector.svc: failed calling admission webhook "neuvector-validating- admission-webhook.neuvector.svc": Post https://neuvector-svc-admission- webhook.neuvector.svc:443/v1/validate/1554384671766437200-1554384671766437404?timeout=30s: service "neuvector-svc-admission-webhook" not found```
+```
+W0404 23:27:15.270619 1 admission.go:236] Failed calling webhook, failing open neuvector- validating-admission-webhook.neuvector.svc: failed calling admission webhook "neuvector-validating- admission-webhook.neuvector.svc": Post https://neuvector-svc-admission- webhook.neuvector.svc:443/v1/validate/1554384671766437200-1554384671766437404?timeout=30s: service "neuvector-svc-admission-webhook" not found
+```
 
 The above log indicates that the cluster kube-apiserver is unable to send the request to the NeuVector webhook successfully because the neuvector-svc-admission-webhook service is not found.
 
@@ -310,7 +334,7 @@ If you see any content like "Error from server ...." or "... is forbidden", it m
 
 In the NeuVector Console in Security Risks -> Admission Control, go to More Operations ->  Advanced Setting and click the "Test" button. NeuVector will modify service neuvector-svc-admission-webhook and see if our webhook server can receive the change notifification or if it fails.
 
-1. Run 
+1. Run
 ```
 kubectl get svc neuvector-svc-admission-webhook -n neuvector -o yaml
 ```

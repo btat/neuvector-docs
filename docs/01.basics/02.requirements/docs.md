@@ -42,7 +42,7 @@ Note 1: PKS is field tested and requires enabling privileged containers to the p
 
 Note 2: NeuVector supports running on linux-based VMs on Mac/Windows using Vagrant, VirtualBox, VMware or other virtualized environments.
 
-##### Minikube 
+##### Minikube
 Please make the following changes to the Allinone deployment yaml.
 ```
 apiVersion: apps/v1 <<-- required for k8s 1.19
@@ -56,8 +56,8 @@ spec:
  app: neuvector-allinone-pod <-- Added
  minReadySeconds: 60
 ...
- nodeSelector: <-- DELETE THIS LINE 
- nvallinone: "true" <-- DELETE THIS LINE 
+ nodeSelector: <-- DELETE THIS LINE
+ nvallinone: "true" <-- DELETE THIS LINE
 apiVersion: apps/v1 <<-- required for k8s 1.19
 kind: DaemonSet
 metadata:
@@ -72,10 +72,10 @@ spec:
 #### Performance and Scaling
 As always, performance planning for NeuVector containers will depend on several factors, including:
 + (Controller & Scanner) Number and size of images in registry to be scanned (by Scanner) initially
-+ (Enforcer) Services mode (Discover, Monitor, Protect), where Protect mode runs as an inline firewall 
++ (Enforcer) Services mode (Discover, Monitor, Protect), where Protect mode runs as an inline firewall
 + (Enforcer) Type of network connections for workloads in Protect mode
 
-In Monitor mode (network filtering similar to a mirror/tap), there is no performance impact and the Enforcer handles traffic at line speed, generating alerts as needed. In Protect mode (inline firewall), the Enforcer requires CPU and memory to filter connections with deep packet inspection and hold them to determine whether they should be blocked/dropped. Generally, with 1GB of memory and a shared CPU, the Enforcer should be able to handle most environments while in Protect mode. 
+In Monitor mode (network filtering similar to a mirror/tap), there is no performance impact and the Enforcer handles traffic at line speed, generating alerts as needed. In Protect mode (inline firewall), the Enforcer requires CPU and memory to filter connections with deep packet inspection and hold them to determine whether they should be blocked/dropped. Generally, with 1GB of memory and a shared CPU, the Enforcer should be able to handle most environments while in Protect mode.
 
 For throughput or latency sensitive environments, additional memory and/or a dedicated CPU core can be allocated to the NeuVector Enforcer container.
 
@@ -84,13 +84,13 @@ For performance tuning of the Controller and Scanner for registry scanning, see 
 For additional advice on performance and sizing, see the [Onboarding/Best Practices section](/deploying/production?target=_blank#best-practices-tips-qa-for-deploying-and-managing-neuvector).
 
 ##### Throughput
-As the chart below shows, basic throughput benchmark tests showed a maximum throughput of 1.3 Gbps PER NODE on a small public cloud instance with 4 CPU cores. For example, a 10 node cluster would then be able to handle a maximum of 13 Gbps of throughput for the entire cluster for services in Protect mode. 
+As the chart below shows, basic throughput benchmark tests showed a maximum throughput of 1.3 Gbps PER NODE on a small public cloud instance with 4 CPU cores. For example, a 10 node cluster would then be able to handle a maximum of 13 Gbps of throughput for the entire cluster for services in Protect mode.
 
-![Throughput](throughput.png)
+![Throughput](/img/01.basics/02.requirements/throughput.png)
 
 This throughput would be projected to scale up as dedicated a CPU is assigned to the Enforcer, or the CPU speed changes, and/or additional memory is allocated. Again, the scaling will be dependent on the type of network/application traffic of the workloads.
 
-##### Latency 
+##### Latency
 Latency is another performance metric which depends on the type of network connections. Similar to throughput, latency is not affected in Monitor mode, only for services in Protect (inline firewall) mode. Small packets or simple/fast services will generate a higher latency by NeuVector as a percentage, while larger packets or services requiring complex processing will show a lower percentage of added latency by the NeuVector enforcer.
 
 The table below shows the average latency of 2-10% benchmarked using the Redis benchmark tool. The Redis Benchmark uses fairly small packets, so the the latency with larger packets would expected to be lower.

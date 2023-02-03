@@ -7,7 +7,7 @@ taxonomy:
 ### Understanding How to Deploy NeuVector
 Deploy the NeuVector containers using Kubernetes, OpenShift, Rancher, Docker, or other platforms. Each type of NeuVector container has a unique purpose and may require special performance or node selection requirements for optimum operation.
 
-The NeuVector open source images are hosted on Docker Hub at /neuvector/{image name}. 
+The NeuVector open source images are hosted on Docker Hub at /neuvector/{image name}.
 
 See the [Onboarding/Best Practices section](/deploying/production?target=_blank#best-practices-tips-qa-for-deploying-and-managing-neuvector) to download an on boarding guide.
 
@@ -39,7 +39,7 @@ By default NeuVector stores various config files in  /var/neuvector/config/backu
 
 This volume can be mapped to [persistent storage](/deploying/production#backups-and-persistent-data) to maintain configuration. Files in the folder may need to be deleted in order to start fresh.
 
-#### Volume Mapping 
+#### Volume Mapping
 Make sure volumes are mapped properly. NeuVector requires these to operate (/var/neuvector is only required on controller/allinone). For example:
 ```
 volumes:
@@ -62,11 +62,11 @@ Note: If deploying docker native (including SWARM) make sure there is not any ho
 
 The following table lists communications from each NeuVector container. The Allinone container combines the Manager, Controller and Enforcer containers so requires the ports listed for those containers.
 
-![Ports](Communication_Matrix_From_To.png)
+![Ports](/img/01.basics/03.installation/01.native/Communication_Matrix_From_To.png)
 
 The following table summarizes the listening ports for each NeuVector container.
 
-![Listening](Communication_Matrix_Listening_Ports.png)
+![Listening](/img/01.basics/03.installation/01.native/Communication_Matrix_Listening_Ports.png)
 
 ##### Additional Ports
 In version 5.1, a new listener port has been added on 8181 in the controller for local controller communication only.

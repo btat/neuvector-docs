@@ -7,7 +7,7 @@ taxonomy:
 ### SAML IDP Configuration
 To configure NeuVector to use Okta SAML IDP server, first, configure the SAML IDP server on the Okta site.
 
-![Okta](okta.png)
+![Okta](/img/08.integration/04.saml/okta.png)
 
 1. Copy "SAML Redirect URI" from NeuVector SAML Setting page, paste it to Okta's single sign on url, recipient url and destination url fields.
 2. Assertion encryption: This field must be <strong>unencrypted.</strong>
@@ -16,15 +16,15 @@ To configure NeuVector to use Okta SAML IDP server, first, configure the SAML ID
 
 Configure SAML settings in NeuVector UI console.
 
-![SAML](saml1.png)
+![SAML](/img/08.integration/04.saml/saml1.png)
 
-Use "View Setup Instructions" button as shown in the following screenshot to locate following information, and copy them into NeuVector's SAML page. 
+Use "View Setup Instructions" button as shown in the following screenshot to locate following information, and copy them into NeuVector's SAML page.
 1. Identity Provider Single Sign-On URL
 2. Identity Provider Issuer
 3. X.509 Certificate
 4. Specify group attribute name if non-default value is used.
 
-![Setting](setting.png)
+![Setting](/img/08.integration/04.saml/setting.png)
 
 After the user is authenticated, the proper role can be derived with group-based role mapping configuration. To setup group-based role mapping,
 

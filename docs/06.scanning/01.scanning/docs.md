@@ -40,7 +40,7 @@ NeuVector provides several ways to review vulnerability and compliance scan resu
 + **Dashboard.** Review summary vulnerabilities and see how they impact the overall [Security Risk Score](/navigation/improve_score).
 + **Security Risks Menu.** View the impact of vulnerabilities and compliance issues and generate reports with advanced filtering.
 + **Assets Menu.** See vulnerability and compliance results for each asset such as registries, nodes, and containers.
-+ **Notifications -> Risk Reports.** View scan events for each asset. 
++ **Notifications -> Risk Reports.** View scan events for each asset.
 + **Response Rules.** Create responses such as web hook notifications or quarantines based on scan results.
 + **REST API.** Trigger scans and pull scan results programmatically to automate the process.
 + **SYSLOG/Webhook Alerts.** Send scan results to a SIEM or other enterprise platforms.
@@ -49,7 +49,7 @@ NeuVector provides several ways to review vulnerability and compliance scan resu
 
 These menu's combine the results from registry (image), node, and container vulnerability scans and compliance checks found in the Assets menu to enable end-to-end vulnerability management and reporting. The Compliance profile menu enables customization of the PCI, GDPR and other compliance checks for generating compliance reports.
 
-![SecurityRisks](vulnerabilities_4_4.png)
+![SecurityRisks](/img/06.scanning/01.scanning/vulnerabilities_4_4.png)
 
 See the next section on [Vulnerability Management](/scanning/scanning/vulnerabilities) for how to manage vulnerabilities in this menu, and the [Compliance & CIS Benchmarks](/scanning/scanning/compliance) section for reporting on CIS Benchmarks and industry compliance such as PCI, GDPR, HIPAA, and NIST.
 
@@ -69,7 +69,7 @@ NeuVector can scan running containers, host nodes, and the orchestration platfor
 
 You can click on each vulnerability name/CVE that is discovered to retrieve a description of it, and click on the inspect arrow in the popup to see the detailed description of the vulnerability.
 
-![Vulnerabilities](Vuln1.png)
+![Vulnerabilities](/img/06.scanning/01.scanning/Vuln1.png)
 
 The auto-scan will also be triggered when ever there is an update to the NeuVector CVE database. Please see the section [Updating the CVE Database](/scanning/updating) for details.
 

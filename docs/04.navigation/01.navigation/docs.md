@@ -11,14 +11,14 @@ Please see the first section Basics -> Connect to Manager for configuration opti
 
 ### Menus and Navigation
 Use the left side menu to navigate in your NeuVector console. Note that there are additional settings in upper right for User Profile and Multi-Cluster configuration.
-![Navigation](4-3_Network_Activity.png)
+![Navigation](/img/04.navigation/01.navigation/4-3_Network_Activity.png)
 
 #### Dashboard
 The Dashboard shows a summary of risk scores, security events, and application protocols detected by NeuVector. It also shows details for some of these security events. PDF reports can be generated from the Dashboard which contain detailed charts and explanations.
 
 At the top of the dashboard there is a summary of the security risks in the cluster. The wrench tool next to the overall risk score can be clicked to open a wizard which will guide you through recommended steps to reduce/improve the risk score. Mousing over each risk gauge will provide a description of it to the right and how to improve the risk score. Also see the separate documentation section Improving Security Risk Score.
 
-![Risks](Dashboard_Risks.png)
+![Risks](/img/04.navigation/01.navigation/Dashboard_Risks.png)
 
 + Overall Security Risk Score. This is a weighted summary of the individual risk areas summarized to the right, including Service exposure, Ingress/Egress exposure, and Vulnerability exploit risks. Click on the wrench to improve the score.
 + Service Exposure Risk Score. This is an indicator of how many services are protected by whitelist rules and running in the Monitor or Protect mode, where risk is lowest. A high ratio of services in Discover mode means these services are not segmented or isolated by whitelist rules.
@@ -27,7 +27,7 @@ At the top of the dashboard there is a summary of the security risks in the clus
 
 Some of the charts are interactive, as shown below with the green arrows.
 
-![Dashboard](Dashboard-Click.png)
+![Dashboard](/img/04.navigation/01.navigation/Dashboard-Click.png)
 
 Some of the event data shown in the dashboard have limits, as described in the Reporting section.
 
@@ -60,10 +60,10 @@ The Tools menu in the upper left has these functions, from left to right:
 + Display/Hide the Legend
 + Take a screen shot
 + Refresh the Network Activity Display
-![Tools](4-3_NA_tools.png)
+![Tools](/img/04.navigation/01.navigation/4-3_NA_tools.png)
 
 Right clicking on a container displays the following actions:
-![Actions](4-3_NA_Actions.png)
+![Actions](/img/04.navigation/01.navigation/4-3_NA_Actions.png)
 
 You can view active sessions, start packet capture recordings, and quarantine from here. You can also change the overall protection mode for the service (all containers for that service) here. The expand/collapse options enable you to simplify or expand the objects.
 
@@ -101,7 +101,7 @@ This is where you can see the logs for Security Events, Risk Reports (e.g. Scann
 Use the search or Advanced Filter to locate specific events. The timeline widget at the top can also be adjusted using the left and right circles to change the time window. You can also easily add rules (Security Policy) to allow or deny the detected event by selecting the Review Rule button and deploying a new rule.
 
 NeuVector continuously monitors all containers for know attacks such as DNS, DDoS, HTTP-smuggling, tunneling etc. When an attack is detected it is logged here and blocked (if container/service is set to protect), and the packet is automatically captured. You can view the packet details, for example:
-![Capture](ping-capture.png)
+![Capture](/img/04.navigation/01.navigation/ping-capture.png)
 
 <strong>Implicit Deny Rule is Violated</strong>
 
@@ -126,7 +126,7 @@ Configure a unique cluster name, new services mode, and other settings here.
 
 If deploying on a Rancher or OpenShift cluster, authentication can be enabled such that Rancher users or OpenShift users can log into the NeuVector console with the associated RBACs. For Rancher users, a connecting button/link from the Rancher console allows Rancher admin's to open and access the NeuVector console directly.
 
-The [New Service Mode](/policy/modes#new-service-mode) sets which protection mode any new services (applications) previously unknown or undefined in NeuVector will by default be set to. For production environments, it is not recommended to set this to Discover. 
+The [New Service Mode](/policy/modes#new-service-mode) sets which protection mode any new services (applications) previously unknown or undefined in NeuVector will by default be set to. For production environments, it is not recommended to set this to Discover.
 
 The [Network Service Policy Mode](/policy/modes#network-service-policy-mode), if enabled, applies the selected policy mode globally to the network rules for all groups, and each Group’s individual policy mode will only apply to process and file rules.
 
@@ -134,7 +134,7 @@ The [Automated Promotion of Group Modes](/policy/modes#automated-promotion-of-gr
 
 The Auto-Deletion of Unused Groups is useful for automated 'clean-up' of the discovered (and auto-created rules for) groups which are no longer in use, especially high-churn development environments. See Policy -> Groups for the list of groups in NeuVector. Removing unused Groups will clean up the Groups list and all associated rules for those groups.
 
-The XFF-FORWARDED-FOR enables/disables use of these headers in enforcing NeuVector network rules. This is useful to retain the original source IP of an ingress connection so it can be used for network rules enforcement. Enable means the source IP will be retained. See below for a detailed explanation. 
+The XFF-FORWARDED-FOR enables/disables use of these headers in enforcing NeuVector network rules. This is useful to retain the original source IP of an ingress connection so it can be used for network rules enforcement. Enable means the source IP will be retained. See below for a detailed explanation.
 
 Multiple webhooks can be configured to be used in [Response Rules](/policy/responserules) for customized notifications. Webhook format choices include Slack, JSON, and key-value pairs.
 
@@ -155,7 +155,7 @@ In a Kubernetes cluster, an application can be exposed to the outside of the clu
 In order to preserve the original source IP address, the user needs to add the following line to the exposed services, in the 'spec' section of the external facing load balancer or ingress controller. (Ref: https://kubernetes.io/docs/tutorials/services/source-ip/)
 
 "externalTrafficPolicy":"Local"
- 
+
 Many implementations of LoadBalancer services and Ingress controllers will add the X-FORWARDED-FOR line to the HTTP request header to communicate the real source IP to the backend applications. This product can recognize this set of HTTP headers, identify the original source IP and enforce the policy according to that.
 
 This improvement created some unexpected issues in some setup. If the above line has been added to the exposed services and NeuVector network policies have been created in a way that expect the network connections are coming from internal proxy/ingress services, because we now identify the connections are from "external" to the cluster, normal application traffic might trigger alerts or get blocked if the applications are put in "Protect" mode.
@@ -174,7 +174,7 @@ You can increase the browser timeout setting, change your password and do other 
 #### Icon Descriptions in Legend > Network Activity
 
 You can toggle the Legend on/off in the tools box of the Network Activity map.
-![Legend](4-3_NA_Legend.png)
+![Legend](/img/04.navigation/01.navigation/4-3_NA_Legend.png)
 
 Here is what the icons mean:
 

@@ -14,23 +14,23 @@ Below are sample screens displayed in the Splunk app.
 
 #### Image Vulnerabilities
 
-![vulnerabilities](vulnerable_images.png)
+![vulnerabilities](/img/08.integration/10.splunk/vulnerable_images.png)
 
 #### Admission Control and Security Events
 
-![admission_security](admission_security_events.png)
+![admission_security](/img/08.integration/10.splunk/admission_security_events.png)
 
 #### Network Violations by Pod/Service (Deployments)
 
-![network](network_violations.png)
+![network](/img/08.integration/10.splunk/network_violations.png)
 
 #### Egress Connection Summary
 
-![egress](egress_destinations.png)
+![egress](/img/08.integration/10.splunk/egress_destinations.png)
 
 #### NeuVector Login Activity Dashboard
 
-![logins](login_summary.png)
+![logins](/img/08.integration/10.splunk/login_summary.png)
 
 ### Setup and Configuration
 
@@ -45,20 +45,20 @@ Download the latest app tarball from [Splunkbase](https://splunkbase.splunk.com/
 In the Splunk UI, click on the Apps dropdown, click "Find More Apps", then search for NeuVector Splunk App.
 
 #### Installation and Setup
-Install the app by either uploading the tarball or following the Splunkbase prompts.  
+Install the app by either uploading the tarball or following the Splunkbase prompts.
 
 1. Configure syslog in NeuVector console
 
-Go to Settings -> Configuration -> Syslog  
+Go to Settings -> Configuration -> Syslog
 
-  a. set the server value as the IP address that Splunk is running  
-  b. choose TCP as the protocol;  
-  c. set port number as 10514;  
-  d. choose Info Level;  
-  e. click SUBMIT to save the setting.  
+  a. set the server value as the IP address that Splunk is running
+  b. choose TCP as the protocol;
+  c. set port number as 10514;
+  d. choose Info Level;
+  e. click SUBMIT to save the setting.
 
 
-![syslog](syslog-config.png)
+![syslog](/img/08.integration/10.splunk/syslog-config.png)
 
 You can configure multiple clusters to send syslog to your splunk instance and your splunk instance will receive these syslogs in real time.
 

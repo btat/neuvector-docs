@@ -48,13 +48,13 @@ Click the ‘Add Registry’ to enter values for the registry you will use in yo
 
 Scenario 1: global configuration example for local image scan
 
-![global-image](jenkins1a.png)
+![global-image](/img/06.scanning/03.build/01.jenkins/jenkins1a.png)
 
 Scenario 2: global configuration example for registry image scan
 
 For global registry configuration, follow the instructions above for local, then add the registry details as below.
 
-![global-registry](registry_console.png)
+![global-registry](/img/06.scanning/03.build/01.jenkins/registry_console.png)
 
 ##### Stand Alone Scanner
 
@@ -70,7 +70,7 @@ To enable NeuVector to scan an image that is not on the same host as the control
 + Add the following environment variable to the controller/allinone: SCANNER_DOCKER_URL=tcp://192.168.1.10:2376
 
 #### Project Configuration
-In your project, choose the 'NeuVector Vulnerability Scanner' plugin from the drop down menu in the 'Add build step.' Check the box "Scan with Standalone scanner" if you want to do the scan in the standalone scanner mode. By default, it uses "Controller & Scanner" mode to do the scan. 
+In your project, choose the 'NeuVector Vulnerability Scanner' plugin from the drop down menu in the 'Add build step.' Check the box "Scan with Standalone scanner" if you want to do the scan in the standalone scanner mode. By default, it uses "Controller & Scanner" mode to do the scan.
 
 Choose Local or a registry name which is the nickname you entered in global config. Enter the repository and image tag name to be scanned. You may choose Jenkins default environment variables for the repository or tag, e.g. $JOB_NAME, $BUILD_TAG, $BUILD_NUMBER. Enter the values for the number of high or medium, and for any name of the vulnerabilities present to fail the build.
 
@@ -78,22 +78,22 @@ After the build is finished, a NeuVector report will be generated. It will show 
 
 Scenario 1: local configuration example
 
-![local-image](jenkins_local.png)
+![local-image](/img/06.scanning/03.build/01.jenkins/jenkins_local.png)
 
 Scenario 2: registry configuration example
 
-![local-registry](jenkins_registry.png)
+![local-registry](/img/06.scanning/03.build/01.jenkins/jenkins_registry.png)
 
 
 #### Jenkins Pipeline
 For the Jenkins pipeline project, you may write your own pipeline script directly, or click the ‘pipeline syntax’ to generate the script if you are new to the pipeline style task.
 
-![pipeline](jenkins5a.png)
+![pipeline](/img/06.scanning/03.build/01.jenkins/jenkins5a.png)
 <img class="alignnone size-full wp-image-4252" src="https://neuvector.com/wp-content/uploads/2018/07/jenkins5a.png" alt="" width="252" height="363" />
 
 Select the NeuVector Vulnerability Scanner from the drop-down, configure it, and Generate the script.
 
-![script](jenkins6a.png)
+![script](/img/06.scanning/03.build/01.jenkins/jenkins6a.png)
 
 Copy the script into your Jenkins task script.
 
@@ -119,14 +119,14 @@ Scenario 2: Simple registry pipeline script example (to insert into your pipelin
 #### Additional Stages
 Add your own pre- and post- image scan stages, for example in the Pipeline stage view example below.
 
-![stages](jenkins7a.png)
+![stages](/img/06.scanning/03.build/01.jenkins/jenkins7a.png)
 
 You are now ready to start your Jenkins builds and trigger the NeuVector Vulnerability Scanner to report any vulnerabilities!
 
 ###OpenShift Route and Registry Token Example
 To configure the plug-in using an OpenShift route for ingress to the controller, add the route into the controller IP field.
 
-![openshift](rhos_jenkins_route.png)
+![openshift](/img/06.scanning/03.build/01.jenkins/rhos_jenkins_route.png)
 
 To use token based authentication to the OpenShift registry, use NONAME as the user and enter the token in the password.
 

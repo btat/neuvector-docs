@@ -13,7 +13,7 @@ This provides the primary view of service Groups and custom Groups to set the mo
 To select a Group to view or manage, select the check box next to it. This is where Process Profile Rules, File Access Rules, DLP, and Custom Compliance checks are managed. Network Rules can be viewed here but are managed in a separate menu.
 Network and Response Rules in NeuVector are created using a ‘from’ and ‘to’ field, which requires a Group as input. A group can be an application, derived from image labels, DNS name or other customized grouping. DNS subdomains are supported, e.g. *.foo.com. IP addresses or subnets can also be used which is useful to control ingress and egress from non-containerized workloads.
 
-![groups](groups_node_demo.png)
+![groups](/img/05.policy/01.overview/groups_node_demo.png)
 
 Reserved group names created automatically by NeuVector include:
 + Containers. All running containers.

@@ -10,7 +10,7 @@ NeuVector supports importing a CRD formatted file from the console. However, thi
 A file in the NeuVector CRD format can be imported via the console in order to set the security policy (rules) specified in the file. These rules will NOT be imported as 'CRD' designated rules, but as regular 'user created' rules. The implication is that these rules can be modified or deleted like other rules, from the console or through the API. They are not protected as CRD rules from modification.
 
 To import from the console, go to Policy -> Groups and select Import Policy Group.
-![import](4-3_Import_Policy.png)
+![import](/img/05.policy/13.usingcrd/1.import/4-3_Import_Policy.png)
 
 **Important**: Imported rules will overwrite any existing rules for the Group.
 

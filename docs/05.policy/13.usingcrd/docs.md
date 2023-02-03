@@ -38,7 +38,7 @@ The simplest way to see how the yaml file format looks for a NeuVector CRD is to
 
 Go to the Policy -> Groups menu and click on Export Group Policy from the upper right.
 
-![CRDExport](export_crd.png)
+![CRDExport](/img/05.policy/13.usingcrd/export_crd.png)
 
 Then select the Groups that you wish to export, such as the three in the demo namespace above. Inspect the saved CRD yaml below to see how the NeuVector network, process, and file rules are expressed.
 
@@ -268,7 +268,7 @@ For example:
 
 
 ### Policy Mode Configuration and Group Definition
-Policy mode configuration and Group definition is supported within the CRD configuration yaml file.  With policymode configured in the yaml configuration file, importing such file will set the target group to this value for the CRD import.  
+Policy mode configuration and Group definition is supported within the CRD configuration yaml file.  With policymode configured in the yaml configuration file, importing such file will set the target group to this value for the CRD import.
 
 Important! The imported target policy mode is not allowed to be modified from the NeuVector console (Policy -> Groups). For example, once the mode is set to Monitor, it can only be changed through CRD modification, not through the console.
 
@@ -276,11 +276,11 @@ Note: The CRD import behavior ignores the PolicyMode of any 'linked' group, leav
 
 ####Policy Mode Configuration Requirements
 + Mode only applies to the configured Target group
-+ The target group configuration must have the format nv.SERVICE_NAME.DOMAIN. 
++ The target group configuration must have the format nv.SERVICE_NAME.DOMAIN.
     - Example:  nv.xxx.yyy
     - xxx.yyy=SERVICE
     - yyy=DOMAIN
-+ Supported values are Discover, Monitor, and Protect 
++ Supported values are Discover, Monitor, and Protect
 + The target group must contain the key-value pair key: service
 + A configured key: domain must match the service domain suffix with the configured service key-value pair
 
@@ -302,7 +302,7 @@ Policy Mode Configuration Yaml file Example
 ### CRD Policy Rules Syntax and Semantics
 
 <strong>Group Name</strong>
-+ Avoid using names which start with fed., nv.ip., host:, or workload: which are reserved for federated groups or ip based services. 
++ Avoid using names which start with fed., nv.ip., host:, or workload: which are reserved for federated groups or ip based services.
 + You can use node, external, or containers as a group name. However, this will be the same as the reserved default group names, so a new group will not be created. Any group definition criteria in the CRD will be ignored, but the rules for the group will be processed. The new rules will be shown under the group name.
 + Meets the criteria: ^[a-zA-Z0-9]+[.:a-zA-Z0-9_-]*$
 + Must not begin with fed, workload, or nv.ip
@@ -324,7 +324,7 @@ Policy Mode Configuration Yaml file Example
 + name - If the name has the service format nv.xxx.yyy, then refer to the above section Policy Mode Configuration section details
 + key - The key conforms to the regular expression pattern ^[a-zA-Z0-9]+[.:a-zA-Z0-9_-]*$
 + op (operation)
-    - string = "=" 
+    - string = "="
     - string = "!="
     - string = "contains"
     - string = "prefix"
@@ -396,18 +396,18 @@ Policy Mode Configuration Yaml file Example
 ###RBAC Support with CRDs
 Utilizing Kubernetes existing RBAC model, NeuVector extends the CRD (Custom Resource Definition) to support RBAC by utilizing Kubernetes’s Rolebinding in association with the configured Namespace in the NeuVector  configured CRD rules when using the NvSecurityRule resource-type. This configured Namespace is then used to enforce the configured Target, which must reside in this namespace configured in the NeuVector security policy. When rolebinding a defined clusterrole, this can be used to bind to a Kubernetes User or Group. The two clusterrole resources types that NeuVector supports are NvSecurityRule and NvClusterSecurityRule.
 
-<strong>Rolebinding & Clusterolebinding with 2 Users in different Namespaces to a Clusterrole 
+<strong>Rolebinding & Clusterolebinding with 2 Users in different Namespaces to a Clusterrole
 (NvSecurityRules & NvClusterSecurityRules resources)</strong>
 
-The following illustrates a scenario creating one Clusterrole containing both resources (NvSecurityRules and NvClusterSecurityRules) to be bound to two different users.  
+The following illustrates a scenario creating one Clusterrole containing both resources (NvSecurityRules and NvClusterSecurityRules) to be bound to two different users.
 
-One user (user1) belongs to Namespace (ns1), while the other user (user2) belongs to Namespace (ns2).  User1 will Rolebind to this created Clusterrole (nvsecnvclustrole), while User2 is Clusterrolebind to this same Clusterrole (nvsecnvclustrole).  
+One user (user1) belongs to Namespace (ns1), while the other user (user2) belongs to Namespace (ns2).  User1 will Rolebind to this created Clusterrole (nvsecnvclustrole), while User2 is Clusterrolebind to this same Clusterrole (nvsecnvclustrole).
 
-The key takeaway here is to illustrate that using Rolebinding, this will have Namespace-Level-Scope, whereas using Clusterrolebinding will have Cluster-Level-Scope.  User1 will Rolebind (Namespace-Level-Scope), and User2 will be Clusterrolebind (Cluster-Level-Scope).  This matters most during RBAC enforcement based on the scope-level that bounds the created users access.  
+The key takeaway here is to illustrate that using Rolebinding, this will have Namespace-Level-Scope, whereas using Clusterrolebinding will have Cluster-Level-Scope.  User1 will Rolebind (Namespace-Level-Scope), and User2 will be Clusterrolebind (Cluster-Level-Scope).  This matters most during RBAC enforcement based on the scope-level that bounds the created users access.
 
 <strong>Example using 2 different types of defined yaml files, and the effect of using each user</strong>
 
-1. Create a Clusterrole containing both NvSecurityRules and NvClusterSecurityRules resources. 
+1. Create a Clusterrole containing both NvSecurityRules and NvClusterSecurityRules resources.
 Note: Notice that this clusterrole has 2 resources configured, nvsecurityrules and nvclustersecurityrules. Example (nvsecnvclustroles.yaml):
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -423,8 +423,8 @@ rules:
   verbs:
   - list
   - delete
-  - create 
-  - get 
+  - create
+  - get
   - update
 - apiGroups:
   - apiextensions.k8s.io
@@ -454,18 +454,18 @@ spec:
           - key: domain
             value: ns1
             op: "="
-  ingress: 
-      -   
+  ingress:
+      -
         selector:
             name: ingress
             criteria:
             - key: domain
               value: demo
-              op: "=" 
+              op: "="
         ports: "tcp/65535"
-        applications: 
+        applications:
             - SSL
-        action:  allow 
+        action:  allow
         name:    ingress
 ```
 ```
@@ -474,7 +474,7 @@ apiVersion: neuvector.com/v1
 kind:     NvClusterSecurityRule
 metadata:
   name:    rbacnvclustmatchnamespacengtargserving
-  namespace: nvclusterspace 
+  namespace: nvclusterspace
 spec:
   target:
       policymode: Protect
@@ -487,18 +487,18 @@ spec:
           - key: domain
             value: eng
             op: "="
-  ingress: 
-      -   
+  ingress:
+      -
         selector:
             name: ingress
             criteria:
             - key: service
               value: nginx-pod.demo
-              op: "=" 
+              op: "="
         ports: "tcp/65535"
-        applications: 
+        applications:
             - SSL
-        action:  allow 
+        action:  allow
         name:    ingress
 ```
 
@@ -511,22 +511,22 @@ Example Error Message:
 Error from server (Forbidden): error when creating "rbacnvclustnamespacengtargnvclustingress.yamltmp": nvclustersecurityrules.neuvector.com is forbidden: User "user1" cannot create resource "nvclustersecurityrules" in API group "neuvector.com" at the cluster scope
 ```
 
-Next, we can switch the user-context to user2 with a broader scope privilege, cluster-level-scope.  This user2 has a Clusterrolebinding that is not Namespace bound, but has a cluster-level-scope, and associates with the NvClusterSecurityRules resource.  
+Next, we can switch the user-context to user2 with a broader scope privilege, cluster-level-scope.  This user2 has a Clusterrolebinding that is not Namespace bound, but has a cluster-level-scope, and associates with the NvClusterSecurityRules resource.
 
 Therefore, using user2 to import either yaml file (nvsecurity.yaml
 or nvclustersecurity.yaml) will be allowed, since this user’s Clusterrolebinding is not restricted to either resource NvSecurityRules (Namespace-Scope) or NvClusterSecurityRules (Cluster-Scope).
 
 ###Customized Configurations for Deployed Applications
-With the use of a customized CRD yaml file, this enables you to customize network security rules, file access rules, and process security rules, all bundled into a single configuration file.  There are multiple benefits to allow these customizations.  
-+ First, this allows the same rules to be applied on multiple Kubernetes environments, allowing synchronization among clusters. 
-+ Second, this allows preemptive rules deployment prior to the applications coming online, which provides a proactive and effective security rules deployment workflow.  
-+ Third, this allows the policymode to change from an evaluation one (such as Discover or Monitor), to one that protects the final staging environment.  
+With the use of a customized CRD yaml file, this enables you to customize network security rules, file access rules, and process security rules, all bundled into a single configuration file.  There are multiple benefits to allow these customizations.
++ First, this allows the same rules to be applied on multiple Kubernetes environments, allowing synchronization among clusters.
++ Second, this allows preemptive rules deployment prior to the applications coming online, which provides a proactive and effective security rules deployment workflow.
++ Third, this allows the policymode to change from an evaluation one (such as Discover or Monitor), to one that protects the final staging environment.
 
-These CRD rules within a yaml file can be imported into the NeuVector security platform through the use of Kubernetes CLI commands such as 'kubectl create –f crd.yaml'.  This empowers the security team to tailor the security rules to be applied upon various containers residing in the Kubernetes environment.  
+These CRD rules within a yaml file can be imported into the NeuVector security platform through the use of Kubernetes CLI commands such as 'kubectl create –f crd.yaml'.  This empowers the security team to tailor the security rules to be applied upon various containers residing in the Kubernetes environment.
 
-For example, a particular yaml file can be configured to enable the policymode to Discover or Monitor a particular container named nv.alpine.ns1 in a staging cluster environment.  Moreover, you can limit ssh access for a configured target container nv.alpine.ns1. to another container nv.redhat.ns2.  
+For example, a particular yaml file can be configured to enable the policymode to Discover or Monitor a particular container named nv.alpine.ns1 in a staging cluster environment.  Moreover, you can limit ssh access for a configured target container nv.alpine.ns1. to another container nv.redhat.ns2.
 
-Once all the necessary tests and evaluations of such security rules are deemed correct, then you can migrate this to a production cluster environment simultaneous to the application deployments by using the NeuVector policy migration feature, which will be discussed later in this section.  
+Once all the necessary tests and evaluations of such security rules are deemed correct, then you can migrate this to a production cluster environment simultaneous to the application deployments by using the NeuVector policy migration feature, which will be discussed later in this section.
 
 <strong>Examples of CRD configurations that perform these functions</strong>
 
@@ -549,17 +549,17 @@ spec:
             value: ns1
             op: "="
   egress:
-      - 
+      -
         selector:
             name: egress
             criteria:
             - key: service
-              value: nv.redhat.ns2      #The destination's running container    
+              value: nv.redhat.ns2      #The destination's running container
               op: "="
         ports:   tcp/22                     #Denies ssh to the destination container nv.redhat.ns2
         applications:
             - SSH
-        action:  deny 
+        action:  deny
         name:    egress
   file:                                       #Applies only to the defined target container group
   - app:
@@ -577,7 +577,7 @@ The above snippet is configured to enforce ssh access from the target group cont
 
 
 ###Policy Groups and Rules Migration Support
-NeuVector supports the exporting of certain NeuVector group types from a Kubernetes cluster in a yaml file and importing into another Kubernetes cluster by utilizing native kubectl commands.  
+NeuVector supports the exporting of certain NeuVector group types from a Kubernetes cluster in a yaml file and importing into another Kubernetes cluster by utilizing native kubectl commands.
 
 <strong>Migration Use Cases</strong>
 + Export tested CRD groups and security rules that are deemed “production ready” from a staging k8s cluster environment to a production k8s cluster environment.
@@ -591,7 +591,7 @@ NeuVector supports the exporting of certain NeuVector group types from a Kuberne
 <strong>Example of groups export</strong>
 + Exported groups with a configured attribute as domain=xx are exported with the Resource-Type NvsecurityRule along with the namespace.
 
-![GroupExport](group_crd.png)
+![GroupExport](/img/05.policy/13.usingcrd/group_crd.png)
 
 <strong>Example of an exported group yaml file with the NvsecurityRule resource type</strong>
 ```
@@ -626,10 +626,10 @@ NeuVector supports the exporting of certain NeuVector group types from a Kuberne
     namespace: default
   spec:
     egress: []
-    file:             #File path profile applicable to the Target group only, and only applies to self-learned and user create groups 
+    file:             #File path profile applicable to the Target group only, and only applies to self-learned and user create groups
     - app:
       - vi
-      - cat     
+      - cat
       behavior: block_access
       filter: /etc/mysecret              #Only vi and cat can access this file with “block_access”.
       recursive: false
@@ -673,7 +673,7 @@ Note: The CRD import behavior ignores the PolicyMode of any 'linked' group, leav
 
 
 <strong>Unsupported Export Group-Types</strong>
-+ Federated 
++ Federated
 + IP-Based
 
 <strong>Import Scenarios</strong>
@@ -686,18 +686,18 @@ Note: The CRD import behavior ignores the PolicyMode of any 'linked' group, leav
 The sample CRD below has two parts:
 
 1. The first part is a NvClusterSecurityRule for the group named containers:
-   
+
 The target for this NvClusterSecurityRule is all containers. It has an ingress policy that does not allow any external connections (outside your cluster) to ssh into your containers. It also denies all containers from using the ssh process.  This defined global behavior applies to all containers.
 
 2. The second part is a NvSecurityRule for a alpine services:
 
 The target is a service called nv.alpine.default in the 'default' namespace. Because it belongs to the all containers, it will inherit the above network policy and process rule. It also adds rules that don't not allow connections of HTTP traffic through port 80 to an external network. Also it not allow the running of the scp process.
 
-Note that for service nv.alpine.default (defined as nv.xxx.yyy where xxx is the service name like alpine, yyy is the namespace like default) we can define policy mode that it is set to. Here it is defined as Protect mode (blocking all abnormal activity). 
+Note that for service nv.alpine.default (defined as nv.xxx.yyy where xxx is the service name like alpine, yyy is the namespace like default) we can define policy mode that it is set to. Here it is defined as Protect mode (blocking all abnormal activity).
 
 Overall since nv.alpine.defult is in protect mode, it will deny containers from running ssh and scp, and also will deny ssh connections from external or http to external.
 
-If you change the nv.alpine.defult policymode to monitor, then NeuVector will just log it when scp/ssh is invoked, or there are ssh connections from external or http to external. 
+If you change the nv.alpine.defult policymode to monitor, then NeuVector will just log it when scp/ssh is invoked, or there are ssh connections from external or http to external.
 
 
 ```
@@ -773,6 +773,6 @@ To allow, or whitelist a process such as a monitoring process to run, just add a
 ### Updating CRD Rules and Adding to Existing Groups
 Updating the CRD generated rules in NeuVector is as simple as updating the appropriate yams file and applying the update 'kubectl apply -f <crdrule.yaml>'.
 
-#### Dynamic criteria support for NvClusterSecurityRule  
-Multiple CRDs which change the criteria for existing custom group(s) are supported. This feature also allows the user to apply multiple CRDs at once, where the NeuVector behavior is to accept and queue the CRD so the immediate response to the user is always success.  During processing, any errors are reported into the console Notifications -> Events. 
+#### Dynamic criteria support for NvClusterSecurityRule
+Multiple CRDs which change the criteria for existing custom group(s) are supported. This feature also allows the user to apply multiple CRDs at once, where the NeuVector behavior is to accept and queue the CRD so the immediate response to the user is always success.  During processing, any errors are reported into the console Notifications -> Events.
 

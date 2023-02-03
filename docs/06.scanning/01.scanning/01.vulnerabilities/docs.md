@@ -23,17 +23,17 @@ The other main tool for reviewing, filtering, and reporting on vulnerabilities i
 
 This menu combines the results from registry (image), node, and container vulnerability scans and compliance checks found in the Assets menu to enable end-to-end vulnerability management and reporting.
 
-The Vulnerabilities menu provides a powerful explorer tool to: 
+The Vulnerabilities menu provides a powerful explorer tool to:
 + Make it easy to filter for viewing or downloading of reports, by typing in a search string or using the advanced filter next to the box. The advanced filter allows users to filter vulnerabilities by fix available (or not available), urgency, workloads, service, container, nodes or namespace names.
 + Understand the Impact of vulnerabilities and compliance checks by clicking on the impact row and reviewing remediation and impacted images, nodes, or containers.
 + View the Protection Status (exploit risk) of any vulnerability or compliance issue to see if there are NeuVector Run-Time security protections (rules) enabled for impacted nodes or containers.
 + 'Accept' a vulnerability/CVE after it has been reviewed to hide it from views and suppress it from reports.
 
-![SecurityRisks](vulnerabilities_4_4.png)
+![SecurityRisks](/img/06.scanning/01.scanning/01.vulnerabilities/vulnerabilities_4_4.png)
 
 Use the filter box to enter a string match, or use the advanced filter next to it to select more specific criteria, as shown below. Downloaded PDF and CSV reports will show only the filtered results.
 
-![AdvancedFilter](advanced_filter_4.png)
+![AdvancedFilter](/img/06.scanning/01.scanning/01.vulnerabilities/advanced_filter_4.png)
 
 Selecting any CVE listed provides additional details about the CVE, remediation, and which images, nodes, or containers are Impacted. The Protection State icon (circle) shows various colors to indicate a rough percentage of the impacted items which are unprotected by NeuVector during run-time, protected by NeuVector rules (in a Monitor or Protect mode), or unaffected in run-time (e.g. an image scanned with this vulnerability has no running containers). The Protection State column color scheme is:
 + Black = unaffected
@@ -48,20 +48,20 @@ The Impact analysis window (showing affected images, nodes, containers) color sc
 
 The Impact colors are meant to correspond to the run-time protection colors for Discover, Monitor and Protect modes in other places in the NeuVector console.
 
-####Accepting Vulnerabilities 
+####Accepting Vulnerabilities
 You can 'Accept' a vulnerability (CVE) to exclude it from reports, views, risk scoring etc. A vulnerability can be selected and the Accept button clicked from several screens such as Security Risks -> Vulnerabilities, Assets -> Containers etc. Once accepted, it is added to the Security Risks -> Vulnerability Profile list. It can be viewed, exported, and edited here. Note that this Accept feature can be limited to listed Images and/or Namespaces. New entries can also be added manually to this list from this screen.
 
 To Accept a vulnerability globally, go to the Security Risks -> Vulnerabilities page and select the vulnerability, then Accept. This will create a Vulnerability Profile for this CVE globally.
 
-![global](accept_global.png)
+![global](/img/06.scanning/01.scanning/01.vulnerabilities/accept_global.png)
 
 To Accept a vulnerability found in an image scan, open the image scan results in Assets -> Registries, pull down the View dropdown and select Accept. Note that you can also choose to Show or Hide accepted vulnerabilities for this image. NOTE: This action will create a Vulnerability Profile entry for this CVE in this IMAGE only.
 
-![image](accept_image_cve.png)
+![image](/img/06.scanning/01.scanning/01.vulnerabilities/accept_image_cve.png)
 
 To Accept a vulnerability found in a container in Assets -> Containers, select the vulnerability and pull down the View dropdown and select Accept. Note that you can also choose to Show or Hide accepted vulnerabilities for this container. NOTE: This action will create a Vulnerability Profile for this CVE in this NAMESPACE only.
 
-![container](accept_containers.png)
+![container](/img/06.scanning/01.scanning/01.vulnerabilities/accept_containers.png)
 
 This action can also be performed in Assets -> Nodes, which will create a Vulnerability Profile for the CVE for all containers, images and namespaces.
 
@@ -70,6 +70,6 @@ This action can also be performed in Assets -> Nodes, which will create a Vulner
 ####Managing Vulnerability Profiles
 Each accepted vulnerability/CVE creates an entry in the Security Risks -> Vulnerability Profile list. These entries can be edited to add or remove attributes such as image name(s) and namespace(s).
 
-![profile](vuln_profile.png)
+![profile](/img/06.scanning/01.scanning/01.vulnerabilities/vuln_profile.png)
 
 New accepted vulnerabilities can also be added here by entering the CVE name to be Accepted.

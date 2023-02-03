@@ -6,7 +6,7 @@ taxonomy:
 
 
 ### The Full Life-Cycle Container Security Platform
-Note: These docs describe the 5.x (Open Source) version. The 5.x images are accessible from Docker Hub with the appropriate tag, e.g. neuvector/controller:(version). For 4.x versions see the [4.x Docs](https://docs.neuvector.com). 
+Note: These docs describe the 5.x (Open Source) version. The 5.x images are accessible from Docker Hub with the appropriate tag, e.g. neuvector/controller:(version). For 4.x versions see the [4.x Docs](https://docs.neuvector.com).
 
 NeuVector provides a powerful end-to-end container security platform. This includes end-to-end vulnerability scanning and complete run-time protection for containers, pods and hosts, including:
 <ol>
@@ -23,10 +23,10 @@ Other features of NeuVector include the ability to quarantine containers and to 
 
 ### Security Containers
 
-The NeuVector run-time container security solution contains four types of security containers: **Controllers**, **Enforcers**, **Managers**, and **Scanners**. A special container called the **Allinone** is also provided to combine the Controller, Enforcer, and Manager functions all in one container, primarily for docker native deployments. 
+The NeuVector run-time container security solution contains four types of security containers: **Controllers**, **Enforcers**, **Managers**, and **Scanners**. A special container called the **Allinone** is also provided to combine the Controller, Enforcer, and Manager functions all in one container, primarily for docker native deployments.
 
 NeuVector can be deployed on virtual machines or on bare metal systems with a single os.
-![Deployment](1Overview.png)
+![Deployment](/img/01.basics/01.overview/1Overview.png)
 
 ##### Controller
 The Controller manages the NeuVector Enforcer container cluster. It also provides REST APIs for the management console. Although typical test deployments have one Controller, multiple Controllers in a high-availability configuration is recommended. 3 controllers is the default in the Kubernetes Production deployment sample yaml.
@@ -46,11 +46,11 @@ The All-in-One container includes a Controller, an Enforcer and a Manager in one
 The Scanner is a container which performs the vulnerability and compliance scanning for images, containers and nodes. It is typically deployed as a replicaset and can be scaled up to as many parallel scanners as desired in order to increase the scanning performance. The Controller assigns scanning jobs to each available scanner in a round-robin fashion until all scans are completed. The scanner also contains the latest CVE database and is updated regularly by NeuVector.
 
 ##### Updater
-The Updater is a container which when run, updates the CVE database for NeuVector. NeuVector regularly publishes new scanner images to include the latest CVE for vulnerability scans. The updater re-deploys all scanner pods by taking the deployment to zero and scaling it back up, forcing a pull of an updated scanner image. 
+The Updater is a container which when run, updates the CVE database for NeuVector. NeuVector regularly publishes new scanner images to include the latest CVE for vulnerability scans. The updater re-deploys all scanner pods by taking the deployment to zero and scaling it back up, forcing a pull of an updated scanner image.
 
 #### Architecture
 Here is a general architecture overview of NeuVector. Not shown is the separate scanner container, which can also be run as a stand-alone pipeline scanner.
-![Architecture](architecture.png)
+![Architecture](/img/01.basics/01.overview/architecture.png)
 
 ### Deployment Examples
 
@@ -62,7 +62,7 @@ This deployment is ideal for single-node or small-scale environments, for exampl
 ##### Controller, Manager and Enforcer Containers
 This is a more generic deployment use case which consists one or more Controllers, one Manager and a set of Enforcers. The Controller and Manager can be deployed on the same node or on different nodes than the Enforcer.
 
-##### All-in-One Only 
+##### All-in-One Only
 You can deploy just the allinone container for registry scanning, using the Jenkins plug-in, or simple one node testing of NeuVector.
 
 ##### Controller Only

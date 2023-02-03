@@ -7,7 +7,7 @@ taxonomy:
 ### Planning Deployments
 The NeuVector containers in a default deployment include the controller, manager, enforcer, scanner, and updater. Placement of where these containers (on which nodes) are deployed must be considered, and appropriate labels, taints or tolerations created to control them.
 
-The enforcer should be deployed on every host/node where application containers to be monitored and protected by NeuVector will be running. 
+The enforcer should be deployed on every host/node where application containers to be monitored and protected by NeuVector will be running.
 
 The controller manages the cluster of enforcers, and can be deployed on the same node as an enforcer or on a separate management node. The manager should be deployed on the node where the controller is running, and will provide console access to the controller. Other required NeuVector containers such as the manager, scanner, and updater are described in more detail in the Best Practices guide referenced below.
 
@@ -29,7 +29,7 @@ If you haven’t done so, pull the images from the NeuVector Docker Hub.
 Download and review this [Deployment Best Practices document](NV_Onboarding_1.2.pdf) for tips such as performance and sizing, best practices, and frequently asked questions about deployments.
 
 ### Deployment Using Helm or Operators
-Automated deployment using Helm can be found at [https://github.com/neuvector/neuvector-helm](https://github.com/neuvector/neuvector-helm). 
+Automated deployment using Helm can be found at [https://github.com/neuvector/neuvector-helm](https://github.com/neuvector/neuvector-helm).
 
 Deployment using an Operator, including RedHat Certified Operator and Kubernetes community operator is supported, with a general description [here](/deploying/production/operators). The NeuVector RedHat operator is at [https://access.redhat.com/containers/#/registry.connect.redhat.com/neuvector/neuvector-operator](https://access.redhat.com/containers/#/registry.connect.redhat.com/neuvector/neuvector-operator), and the community operator at [https://operatorhub.io/operator/neuvector-operator](https://operatorhub.io/operator/neuvector-operator).
 
@@ -40,7 +40,7 @@ Automated deployment on Kubernetes is supported using a ConfigMap. Please see th
 We recommend that multiple controllers be run for a high availability (HA) configuration. The controllers use the consensus based RAFT protocol to elect a leader and if the leader goes down, to elect another leader. Because of this, the number of active controllers should be an odd number, for example 3, 5, 7 etc.
 
 ### Controller HA
-The controllers will synchronize all data between themselves, including configuration, policy, conversations, events, and notifications. 
+The controllers will synchronize all data between themselves, including configuration, policy, conversations, events, and notifications.
 
 If the primary active controller goes down, a new leader will automatically be elected and take over.
 
@@ -160,7 +160,7 @@ By default the console is exposed as a service on port 8443, or nodePort with a 
 
 
 ### Handing Host Updates or Auto-Scaling Nodes with a Pod Disruption Budget
-Maintenance or scaling activities can affect the controllers on nodes. Public cloud providers support the ability to auto-scale nodes, which can dynamically evict pods including the NeuVector controllers. To prevent disruptions to the controllers, a NeuVector pod disruption budget can be created. 
+Maintenance or scaling activities can affect the controllers on nodes. Public cloud providers support the ability to auto-scale nodes, which can dynamically evict pods including the NeuVector controllers. To prevent disruptions to the controllers, a NeuVector pod disruption budget can be created.
 
 For example, create the file below nv_pdb.yaml to ensure that there are at least 2 controllers running at any time.
 ```
@@ -191,7 +191,7 @@ See the section on [Docker deployment](/deploying/docker) for sample compose fil
 ### Multi-site, Multi-Cluster Architecture
 For enterprises with multiple locations and where a separate NeuVector cluster can be deployed for each location, the following is a proposed reference architecture. Each cluster has its own set of controllers and is separately managed.
 
-![Multi-Site](multisite.png)
+![Multi-Site](/img/02.deploying/01.production/multisite.png)
 
 See a more detailed description in this file >
 [NeuVector Multi-Site Architecture](multisite.pdf)

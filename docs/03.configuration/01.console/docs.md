@@ -12,7 +12,7 @@ Open a browser window, connect to the manager or all-in-one container's host IP 
 https://<manager_host_ip>:8443
 ```
 
-![Navigation](3_0_Dashboard.png)
+![Navigation](/img/03.configuration/01.console/3_0_Dashboard.png)
 
 You can manage NeuVector from the Console or by using the REST API.
 
@@ -119,7 +119,7 @@ spec:
           servicePort: 443
 ```
 
-You will need to change the annotation for the ingress address from ingress.mycloud.net to your appropriate address. 
+You will need to change the annotation for the ingress address from ingress.mycloud.net to your appropriate address.
 
 This example uses the URL cloud.neuvector.com. After the ingress service is created, you can find it's external IP. You then can configure the hosts file to point cloud.neuvector.com to that IP. After that, you should be able to browse to https://cloud.neuvector.com (the url you choose to use).
 

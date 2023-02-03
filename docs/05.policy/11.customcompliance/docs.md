@@ -59,22 +59,22 @@ Other Notes
 ####Samples
 Creating a custom check script on demo group comprised of 3 containers
 
-![ComplianceDemo](compliance1.png)
- 
-Showing compliance results for nginx container, which has a dirty cow file, so a warning is reported.  
+![ComplianceDemo](/img/05.policy/11.customcompliance/compliance1.png)
 
-![ComplianceNginx](compliance2.png)
+Showing compliance results for nginx container, which has a dirty cow file, so a warning is reported.
+
+![ComplianceNginx](/img/05.policy/11.customcompliance/compliance2.png)
 
 Showing compliance result for nodejs container, which does not have a dirty cow file, so a pass is reported from the script.
 
-![ComplianceNodejs](compliance_nodejs.png)
+![ComplianceNodejs](/img/05.policy/11.customcompliance/compliance_nodejs.png)
 
 Showing compliance result for nginx container for a custom check that had a timeout.
- 
-![ComplianceTimeout](compliance_timeout.png)
+
+![ComplianceTimeout](/img/05.policy/11.customcompliance/compliance_timeout.png)
 
 
-###Creating a response rule for compliance report 
+###Creating a response rule for compliance report
 Response rules can be created in Policy -> Response Rules that are based on results of custom compliance check results. The results are part of the category Compliance, and responses can be created for all events of a certain level.
 
 + Choose category compliance
@@ -86,7 +86,7 @@ Response rules can be created in Policy -> Response Rules that are based on resu
 
 The next compliance event with result warning will trigger the corresponding response rule action.
 
-![ComplianceResponse](compliance_response_1.png)
+![ComplianceResponse](/img/05.policy/11.customcompliance/compliance_response_1.png)
 
 Create a response rule for compliance report and custom check script by name:
 
@@ -99,6 +99,6 @@ Create a response rule for compliance report and custom check script by name:
 
 The next compliance event with warning will trigger the corresponding response rule action.
 
-![ComplianceResponse](compliance_report_2.png)
+![ComplianceResponse](/img/05.policy/11.customcompliance/compliance_report_2.png)
 
 

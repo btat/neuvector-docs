@@ -32,12 +32,12 @@ Or
 1. Click the Tool icon to follow the Wizard to perform the above steps
 
 ##### Ingress/Egress Risk
-1. Click the Tool icon to follow the Wizard to review Ingress and Egress 
+1. Click the Tool icon to follow the Wizard to review Ingress and Egress
 2. Review all Ingress and Egress Connections to make sure they should be allowed
 3. Switch all services that are still in Discover mode to Monitor or Protect
 4. Review and Clear all threats, violations and session history by clicking the Delete/Trash icon for each one
 
-##### Privileged and/or Root Containers 
+##### Privileged and/or Root Containers
 1. Remove privileged containers
 2. Remove Root Containers
 Note: This may not be possible due to your required containers, however each of these only account for 4 points.
@@ -53,9 +53,9 @@ Note: This may not be possible due to your required containers, however each of 
 
 #### How to Customize Which Container Groups Are Included in the Score
 
-To enable or disable which container Groups are included in the Security Risk Score, go to the Policy -> Groups menu, and select the Group to modify. The summary column on the right has a 'Scorable' icon which indicates which groups are used for scoring. 
+To enable or disable which container Groups are included in the Security Risk Score, go to the Policy -> Groups menu, and select the Group to modify. The summary column on the right has a 'Scorable' icon which indicates which groups are used for scoring.
 
-![scorable](risk_scorable.png)
+![scorable](/img/04.navigation/03.improve_score/risk_scorable.png)
 
 Select or deselect the Scorable check box in the upper right for the selected Group.
 

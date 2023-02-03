@@ -17,11 +17,11 @@ The ORB supports two use cases:
 In addition, make sure there is a NeuVector scanner container deployed and configured to connect to the Allinone or Controller. In 4.0 and later, the neuvector/scanner container must be deployed separate from the allinone or controller.
 
 #### Create a Context in Your CircleCI App
-![context](context.png)
+![context](/img/06.scanning/03.build/03.circleci/context.png)
 
-#### Configure Settings 
+#### Configure Settings
 Configure the Environment Variables for Connecting to and Authenticating
-![settings](circleci_settings.png)
+![settings](/img/06.scanning/03.build/03.circleci/circleci_settings.png)
 
 Add the NeuVector orb to Your Build config.yaml
 ```
@@ -44,6 +44,6 @@ The registry_url is the location to find the image to be scanned. Configure the 
 
 #### Review the Results
 The build task will pass or fail based on the criteria set. In either case you can review the full scan report.
-![fail](circleci_fail.png)
+![fail](/img/06.scanning/03.build/03.circleci/circleci_fail.png)
 
 

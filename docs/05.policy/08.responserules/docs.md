@@ -5,9 +5,9 @@ taxonomy:
 ---
 
 ### Policy: Response Rules
-Response Rules provide a flexible, customizable rule engine to automate responses to important security events. Triggers can include Security Events, Vulnerability Scan results, CIS Benchmarks, Admission Control events and general Events. Actions include container quarantine, webhooks, and suppression of alerts. 
+Response Rules provide a flexible, customizable rule engine to automate responses to important security events. Triggers can include Security Events, Vulnerability Scan results, CIS Benchmarks, Admission Control events and general Events. Actions include container quarantine, webhooks, and suppression of alerts.
 
-![ResponseRules](response1.png)
+![ResponseRules](/img/05.policy/08.responserules/response1.png)
 
 Creating a new Response Rule using the following:
 + Group. A rule will apply to a Group. Please see the section Run-Time Security Policy -> Groups for more details on Groups and how to create a new one if needed.
@@ -15,7 +15,7 @@ Creating a new Response Rule using the following:
 + Criteria. Specify one or more criteria. Each Category will have different criteria which can be applied. For example, by the event name, severity, or minimum number of high CVEs.
 + Action. Select one or more actions. Quarantine will block all network traffic in/out of a container. Webhook requires that a webhook endpoint be defined in Settings -> Configuration. Suppress log will prevent this event from being logged in Notifications.
 
-![NewResponseRules](newrule1.png)
+![NewResponseRules](/img/05.policy/08.responserules/newrule1.png)
 
 <Strong>IMPORTANT</Strong>  All Response Rules are evaluated to determine if they match the condition/criteria. If there are multiple rule matches, each action(s) will be performed. This is different than the behavior of Network Rules, which are evaluated from top to bottom and only the first rule which matches will be executed.
 
@@ -30,7 +30,7 @@ Actions from multiple rules will be applied if an event matches multiple rules. 
 There are 6 default response rules included with NeuVector which are set to the status ‘disabled,’ one for each category. Users can either modify a default rule to match their requirements or create new ones. Be sure to enable any rules which should be applied.
 
 #### Response Rule Parameters Matrix
-![matrix](resp1.png)
+![matrix](/img/05.policy/08.responserules/resp1.png)
 
 #### Using Multiple Criteria in a Single Rule
 The matching logic for multiple criteria in one response rule is:
@@ -53,72 +53,72 @@ Note4: Each rule can have multiple actions.
 #### Creating a response rule for security event logs
 
 + Click "insert to top" to insert the rule at the top
-+ Choose a service group name if the rule needs to be applied to a particular service group 
++ Choose a service group name if the rule needs to be applied to a particular service group
 + Choose category as security event
 + Add criteria for the event log to be included as matching criteria
-+ Select actions to be applied Quarantine, Webhook or suppress log 
++ Select actions to be applied Quarantine, Webhook or suppress log
 + Enable status
 + The log levels or process names can be used as other matching criteria
 
 
 #### Sample rule to quarantine container and send webhook when package is updated in the nv.alpinepython.default container.
 
-![rulesample](resp3.png)
+![rulesample](/img/05.policy/08.responserules/resp3.png)
 
 #### Icons to manage rules - edit, delete, disable and insert new rule below
 
-![manage](resp4.png)
+![manage](/img/05.policy/08.responserules/resp4.png)
 
 #### Creating a response rule for event logs
 
 + Click "insert to top" to insert the rule at the top
-+ Choose a service group name if the rule needs to be applied to a particular service group 
++ Choose a service group name if the rule needs to be applied to a particular service group
 + Choose Event the category
 + Add name of the event log to be included as the matching criteria
-+ Select actions to be applied - Quarantine, Webhook or suppress log 
++ Select actions to be applied - Quarantine, Webhook or suppress log
 + Enable status
 + The log Level can be used as other matching criteria
 
 
 #### Sample events that can be chosen for a response rule
 
-![events](resp5.png)
+![events](/img/05.policy/08.responserules/resp5.png)
 
 #### Sample criteria for Admission control events
 
-![events](admission.png)
+![events](/img/05.policy/08.responserules/admission.png)
 
 #### Creating a response rule for cve-report category (log level and report name as matching criteria)
 
 + Click "insert to top" to insert the rule at the top
-+ Choose a service group name if the rule needs to be applied to a particular service group 
-+ Choose category CVE-Report 
-+ Add log level as matching criteria or cve-report type 
++ Choose a service group name if the rule needs to be applied to a particular service group
++ Choose category CVE-Report
++ Add log level as matching criteria or cve-report type
 + Select actions to be applied Quarantine, Webhook or suppress log (quarantine is not applicable for registry scan)
 + Enable status
 
 #### Sample CVE report types that can be chosen for CVE-Report category response rule
 
-![cvereport](resp7.png)
+![cvereport](/img/05.policy/08.responserules/resp7.png)
 
 #### Quarantine container and send webhook when vulnerability scan results contain more than 5 high level CVE vulnerabilities for that container
 
-![cvequarantine](resp8.png)
+![cvequarantine](/img/05.policy/08.responserules/resp8.png)
 
 #### Send a webhook if container contains vulnerability with name cve-2018-12
 
-![webhook](resp8-a.png)
+![webhook](/img/05.policy/08.responserules/resp8-a.png)
 
-#### Creating response rule for CIS benchmarks (log level and benchmark number as matching criteria) 
+#### Creating response rule for CIS benchmarks (log level and benchmark number as matching criteria)
 
-+ Click "insert to top" to insert the rule at the top 
++ Click "insert to top" to insert the rule at the top
 + Choose service group name if rule need to be applied  for a particular service group
 + Choose category Benchmark
 + Add log level as matching criteria or benchmark number, e.g. “5.12” Ensure the container's root filesystem is mounted as read only
 + Select actions to be applied Quarantine, Webhook and suppress log (quarantine is not applicable Host Docker and Kubenetes benchmark)
 + Enable status
 
-![cis](resp8-b.png)
+![cis](/img/05.policy/08.responserules/resp8-b.png)
 
 #### Unquarantine a container by deleting response rule
 
@@ -128,20 +128,20 @@ Note4: Each rule can have multiple actions.
 
 #### Viewing the rule id responsible for the container quarantine (in Notifications -> Events)
 
-![unquarantine](resp9.png)
+![unquarantine](/img/05.policy/08.responserules/resp9.png)
 
 #### Unquarantine option popup when the appropriate response rule is deleted
 Check the box to unquarantine any containers which were quarantined by this rule
 
-![option](resp10.png)
+![option](/img/05.policy/08.responserules/resp10.png)
 
-#### Complete list of categoried criteria that can be configured for Response Rules 
+#### Complete list of categoried criteria that can be configured for Response Rules
 Note that some criteria require a value (e.g. cve-high:1, name:D.5.4, level:critical) delimited by a colon, while others are preset and will show in the drop down when you start typing a criteria.
 
 ##### Events
 
 ```
-Container.Start 
+Container.Start
 Container.Stop
 Container.Remove
 Container.Secured

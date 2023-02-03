@@ -8,7 +8,7 @@ taxonomy:
 
 The NeuVector scanner can be triggered from the Azure DevOps pipeline by using the NeuVector extension published in the Azure DevOps Marketplace.
 
-![AzureDevOps](azure_devops.png)
+![AzureDevOps](/img/06.scanning/03.build/04.azuredevops/azure_devops.png)
 
 The extension supports both remote and local scanning where the NeuVector controller can remotely scan an image in a registry during the build, or dynamically start a local controller to scan the image on the Azure agent vm.
 

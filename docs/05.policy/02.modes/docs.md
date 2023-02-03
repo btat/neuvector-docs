@@ -8,7 +8,7 @@ taxonomy:
 
 The NeuVector Violation Detection module has three modes: Discover, Monitor, and Protect. At any point in time, any Group (beginning with 'nv', or the 'Nodes' group) can be in any of these modes. The mode can be switched from the Groups menu, Network Activity view, or the Dashboard. Container Groups can have Process/File rules in a different mode than Network rules, as described [here](/policy/modes#split-policy-mode).
 
-![Modes](switchmodes.png)
+![Modes](/img/05.policy/02.modes/switchmodes.png)
 
 Note: Custom created groups don't have a Protection mode. This is because they may contain containers from different underlying groups, each of which may be in a different mode, causing confusion about the behavior.
 
@@ -34,7 +34,7 @@ In the Network map you can click on any conversation (green, yellow, red line) t
 In Protect mode, NeuVector enforcers will block (deny) any network violations and attacks detected. Violations are shown in the Network map with a red ‘x’ in them, meaning they have been blocked. Unauthorized processes and file access will also be blocked in Protect mode. DLP sensors which match will block network connections.
 
 ### Switching Between Modes
-You can easily switch NeuVector Groups from one mode to another. Remember that in Discover mode, NeuVector is building a Security Policy for allowed, normal container behavior. You can see these rules in the Policy -> Groups tab or in detail in the Policy -> Network Rules menu. 
+You can easily switch NeuVector Groups from one mode to another. Remember that in Discover mode, NeuVector is building a Security Policy for allowed, normal container behavior. You can see these rules in the Policy -> Groups tab or in detail in the Policy -> Network Rules menu.
 
 When you switch from Discover to Monitor mode, NeuVector will flag all violations of normal behavior not explicitly allowed. Because NeuVector enforces policy based on applications and groups with similar attributes, it’s typically not necessary to add or edit rules when scaling up or scaling down containers.
 
@@ -43,19 +43,19 @@ Please ensure that, before introducing new updates that result in new types of c
 ##### New Service Mode
 If new services are discovered by NeuVector, for example a previously unknown container starts running, it can be set to a default mode. In Discover mode, NeuVector will start to learn its behavior and build Rules. In Monitor, a violation will be generated when connections to the new service are detected. In Protect, all connections to the new service will be blocked unless the rules have been created prior.
 
-![NewServiceMode](newservices.png)
+![NewServiceMode](/img/05.policy/02.modes/newservices.png)
 
 #### Network Service Policy Mode
 There is a global setting available in Settings -> Configuration to separately set the network protection mode for enforcement of network rules. Enabling this (default is disabled), causes all network rules to be in the protection mode selected (Discover, Monitor, Protect), while process/file rules remain in the protection mode for that Group, as displayed in the Policy -> Groups screen. In this way, network rules can be set to Protect (blocking), while process/file policy can be set to Monitor, or vice versa.
 
 #### Automated Promotion of Group Modes
-Promotes a Group’s protection Mode based on elapsed time and criteria. This automation does not apply to CRD created Groups. This features allows a new application to run in Discover for some time period, learning the behavior and NeuVector creating allow-list rules for Network and Process, then automatically moving to Monitor, then Protect mode. 
+Promotes a Group’s protection Mode based on elapsed time and criteria. This automation does not apply to CRD created Groups. This features allows a new application to run in Discover for some time period, learning the behavior and NeuVector creating allow-list rules for Network and Process, then automatically moving to Monitor, then Protect mode.
 
 The criterion for moving from Discover to Monitor mode is: elapsed time for learning all network and process activity of at least one live pod in the Group. For example, if this is set to 7 days, then 7 days after a running pod for the group is detected, the mode will be automatically promoted to Monitor.
 
 The criterion for moving from Monitor to Protect mode is: there are no security events (network, process etc) for the timeframe set for the Group. For example, if this is set to 14 days, then if no violations (network, process, file) are triggered for 14 days (e.g. the quiet period), then the mode is automatically promoted to Protect. If there are no running pods in the group, the promotion will not occur.
 
-![Promotion](policy_promotion.png)
+![Promotion](/img/05.policy/02.modes/policy_promotion.png)
 
 ##### Conflict Resolution Between Services In Different Modes
 For network connections between containers in different service groups, if their policy modes are different, the following table shows how the system resolves the conflicts.

@@ -23,13 +23,13 @@ Compliance results are show in the list by Category and Name. Categories include
 
 Use the Advanced filter to select compliance checks based on platform, host, namespace or industry standard, as shown below.
 
-![compliance](compliance_4.png)
+![compliance](/img/06.scanning/01.scanning/02.compliance/compliance_4.png)
 
 After applying the filter, only the relevant CIS benchmarks and custom checks will be shown, and a report can be generated and downloaded. This is how reports for standards such as PCI, HIPAA, GDPR and other standards can be generated.
 
 The following screenshot shows an example of a secret found in an image scan.
 
-![secrets](secret_compliance_4.png)
+![secrets](/img/06.scanning/01.scanning/02.compliance/secret_compliance_4.png)
 
 
 ##### Customizing Compliance Templates for PCI, GDPR, HIPAA, NIST and others
@@ -39,11 +39,11 @@ To customize any compliance profile, select the industry standard (e.g. PCI), th
 
 Use the Action button to add or remove any compliance tag from that check.
 
-![profile](compliance_profile_4.png)
+![profile](/img/06.scanning/01.scanning/02.compliance/compliance_profile_4.png)
 
 In addition, you can select which 'Assets' are considered to be part of the compliance reports by clicking on the Assets tab. By default, all compliance templates are applied to Images, Nodes and Containers.
 
-![compliance_assets](profile_assets_4.png)
+![compliance_assets](/img/06.scanning/01.scanning/02.compliance/profile_assets_4.png)
 
 Use the Action button to add or remove compliance templates for assets.
 + Images. Select the standard(s) to be reported for Images.
@@ -52,18 +52,18 @@ Use the Action button to add or remove compliance templates for assets.
 
 Alternatively, instead of restricting by the above criteria, compliance templates can be restricted to certain Namespaces. If this box is checked and namespace(s) added, reports will be generated for all assets which apply to these namespaces. This can be useful if, for example, the PCI template should only report on assets for namespaces which container PCI in-scope (applicable) workloads.
 
-![namespace](DocheckASSETSEnableNS.png)
+![namespace](/img/06.scanning/01.scanning/02.compliance/DocheckASSETSEnableNS.png)
 
 After the templates and assets are customized (if desired) in the Security Risks -> Compliance Profiles menu, reports can be generated in the Security Risks -> Compliance menu by opening the advanced filter and selecting the compliance template desired. For example, selecting GDPR will filter the display and reports for only the GDPR profile.
 
-#### Secrets Auditing 
+#### Secrets Auditing
 NeuVector checks for over 40 common types of secrets as part of the image compliance scans and run-time scans. In addition, [custom compliance scripts](/policy/customcompliance) can be configured for containers or hosts, and the [DLP packet inspection](/policy/dlp) feature can be used to check for secrets in network payloads.
 
 The results for secrets auditing can be found in the Compliance section of image scans (Assets -> Registries), containers (Assets -> Containers), nodes (Assets -> Nodes), and the compliance management menu (Security Risks -> Compliance).
 
-The following is an example of how secrets detected in an image scan will be displayed. 
+The following is an example of how secrets detected in an image scan will be displayed.
 
-![secrets](secrets_image_4.png)
+![secrets](/img/06.scanning/01.scanning/02.compliance/secrets_image_4.png)
 
 Here is a list of the types of secrets being detected.
 + General Private Keys

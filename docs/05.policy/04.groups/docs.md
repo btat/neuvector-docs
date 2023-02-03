@@ -7,10 +7,10 @@ taxonomy:
 ### Policy: Groups
 
 This menu is the key area to view and manage security rules and customize Groups for use in rules. It is also used to switch modes of Groups between Discover, Monitor, and Protect. Container Groups can have Process/File rules in a different mode than Network rules, as described [here](/policy/modes#split-policy-mode). Please see the following individual sections for explanations of Custom Compliance Checks, Network Rules, Process and File Access Rules and DLP/WAF detection. Note: Network rules can be viewed in the Groups menu for any group, but must be edited separately in the [Network Rules](/policy/networkrules) menu.
- 
+
 NeuVector automatically creates Groups from your running applications. These groups start with the prefix 'nv.' You can also manually add them using a CRD or the REST API and can be created in any mode, Discover, Monitor, or Protect. Network and Response Rules require these Group definitions. For automatically created Groups ('learned' groups starting with 'nv'), NeuVector will learn the network and process rules and add them while in Discover mode. Custom Groups will not auto-learn and populate rules.
 
-![groups](5_groups.png)
+![groups](/img/05.policy/04.groups/5_groups.png)
 
 It is convenient to see groups of containers and apply rules to each group. NeuVector creates a list of groups based on the container images. For example, all containers started from one Wordpress image will be in the same group. Rules are automatically created and applied to the group of containers.
 
@@ -27,7 +27,7 @@ NeuVector automatically creates a group called 'nodes' which represents each nod
 
 The nodes can then be put into the Monitor or Protect mode, where NeuVector will alert is any process starts while in Monitor mode, and block that process in Protect mode.
 
-![nodeGroup](host_protection.png)
+![nodeGroup](/img/05.policy/04.groups/host_protection.png)
 
 To enable host protection with process profile rules, select the 'nodes' group and review the learned processes on the node. Customize if needed by adding, deleting or editing process rules. Then switch the mode to Monitor or Protect.
 
@@ -50,7 +50,7 @@ Groups can be created by:
 + **Labels**
 > Select containers by their labels. Examples: com.docker.compose.project=wordpress, location@us-west
 + **Addresses**
-> Create a group by DNS name or IP address ranges. Examples: address=www.google.com, address=10.1.0.1, address=10.1.0.0/24, address=10.1.0.1-10.1.0.25. DNS name can be any name resolvable. Address criteria do not accept the != operator 
+> Create a group by DNS name or IP address ranges. Examples: address=www.google.com, address=10.1.0.1, address=10.1.0.0/24, address=10.1.0.1-10.1.0.25. DNS name can be any name resolvable. Address criteria do not accept the != operator
 
 A group can be created with mixed criteria types, except the 'address' type, which cannot be used together with other criteria. Mixed criteria enforces an ‘AND’ operation between the criteria, for example label service_type=data AND image=mysql. Multiple entries for one or criteria are treated as OR, for example address=google.com OR address=yahoo.com. Note: To assist in analyzing ingress/egress connections, a list of ingress and egress IPs can be downloaded from the Dashboard -> Ingress/Egress details section as an Exposure Report.
 

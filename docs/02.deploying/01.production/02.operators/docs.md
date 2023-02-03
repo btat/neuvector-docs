@@ -29,7 +29,7 @@ oc delete rolebinding -n neuvector system:openshift:scc:privileged
 </head>
 <body>
 <div id="full-wrapper">
-  <ul class="dopt-accordion fixed-height arrow-tri">  
+  <ul class="dopt-accordion fixed-height arrow-tri">
 <!-- NOTE: Toggle Box #1 -->
 	<input class="title-option" id="acccert" name="accordion-1" type="checkbox" />
   <label class="title-panel" onClick="" for="acccert"><span><i class="icon-code"></i>Deploy Using Certified Operator</span></label>
@@ -82,7 +82,7 @@ oc adm policy add-scc-to-user privileged --serviceaccount default --namespace ne
 </li>
 <li>Confirm Install</li>
 <li>Prepare the YAML configuration values for the NeuVector installation as shown in the sample screen shot below. The YAML presented in the OpenShift Console provides all available configuration options and their default values.
-<img src="/deploying/production/operators/operator_cert.png"></li>
+<img src="/img/02.deploying/01.production/02.operators/operator_cert.png"></li>
 
 <li>When the operator is installed and ready for use, a NeuVector instance can be installed.
 <p><ul>
@@ -118,7 +118,7 @@ Optionally, you can also create additional users in the Settings -> Users &
 <p><strong>Upgrading NeuVector</strong>
 &nbsp;</p>
 Upgrade the NeuVector version by updating the Operator version which is associated with the desired NeuVector version.
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
 </div>
 </body>
@@ -129,7 +129,7 @@ Upgrade the NeuVector version by updating the Operator version which is associat
 </head>
 <body>
 <div id="full-wrapper">
-  <ul class="dopt-accordion fixed-height arrow-tri">  
+  <ul class="dopt-accordion fixed-height arrow-tri">
 
 <!-- NOTE: Toggle Box #2 -->
 	<input class="title-option" id="acccomm" name="accordion-1" type="checkbox" />
@@ -276,18 +276,18 @@ spec:
 &nbsp;</p>
 
 <ol><li>From Operators > Installed Operators > NeuVector Operator
-<img src="/deploying/production/operators/1_Installed.png"></li>
+<img src="/img/02.deploying/01.production/02.operators/1_Installed.png"></li>
 
 <li>Click on NeuVector to list instances
-<img src="/deploying/production/operators/2_Instance.png"></li>
+<img src="/img/02.deploying/01.production/02.operators/2_Instance.png"></li>
 
 <li>Click on YAML to edit parameters
-<img src="/deploying/production/operators/3_YAML.png"></li>
+<img src="/img/02.deploying/01.production/02.operators/3_YAML.png"></li>
 
 <li>Update tag and click Save
-<img src="/deploying/production/operators/4_tag_save.png"></li>
+<img src="/img/02.deploying/01.production/02.operators/4_tag_save.png"></li>
 </ol>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
 </div>
 &nbsp;

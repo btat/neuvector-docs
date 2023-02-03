@@ -15,17 +15,17 @@ Users can be restricted to certain namespaces. First select the global role (use
 
 Select a role name from the list of roles, then enter the namespace(s) which the user allowed. For example, below is a global reader (view only) role, but for namespace 'demo' the user has admin permissions and for the namespace 'staging' the user has CI/Ops permissions. If a custom role was previously configured that can also be selected.
 
-![namespace_user](namespace_user_4.png)
+![namespace_user](/img/03.configuration/02.users/namespace_user_4.png)
 
 
-Note 1: If a user has previously logged in through an enterprise integration, their Identify Provider (e.g. OpenID Connect) will be listed. A user can be promoted to a Federated admin if multi-cluster management is in use by selecting the user and editing. 
+Note 1: If a user has previously logged in through an enterprise integration, their Identify Provider (e.g. OpenID Connect) will be listed. A user can be promoted to a Federated admin if multi-cluster management is in use by selecting the user and editing.
 
 Note 2: When a namespace restricted user configures a registry in Assets in NeuVector, only users with access to that namespace can see/scan that registry. Global users will be able to see/manage that registry, but not any users with restricted namespaces / role.
 
 #### Roles
 Preconfigured roles include Admin, Reader, and CI/Ops. To create a new custom role, select  the Roles tab in Settings -> Users & Roles. Name the role and add the appropriate read or write permission to it.
 
-![roles](roles_4.png)
+![roles](/img/03.configuration/02.users/roles_4.png)
 
 #### RBAC Permissions
 
@@ -47,14 +47,14 @@ Groups can be mapped to preset or custom roles in NeuVector. In addition, a role
 
 In the LDAP/AD, SAML, or OIDC configuration in Settings, the last section of the configuration screen maps Groups to Roles and Namespaces. First select a default role, if any, for mapping.
 
-![DefaultRole](groups_default_role.png)
+![DefaultRole](/img/03.configuration/02.users/groups_default_role.png)
 
 To map a group to a role and namespace, click Add to create a new mapping. Select a global role or none. If admin or FedAdmin is selected, this gives write access to all namespaces. If a different role is selected, it can be further restricted by selecting the desired namespace(s).
 
-![AddMapping](group_role_map_namespace.png)
+![AddMapping](/img/03.configuration/02.users/group_role_map_namespace.png)
 
 The following example provides some possible mappings. Demo_admin can read/view all namespaces but has admin rights to the demo and demo2 namespaces. System_admin only has admin rights to the kube-system namespace.  And fed_admins has the preset fedAdmin role which gives write access to all resources across multiple clusters.
 
-![MappingExamples](group_role_map_examples.png)
+![MappingExamples](/img/03.configuration/02.users/group_role_map_examples.png)
 
 <strong>Important</strong>: If the user is in multiple groups, the role will be 'first matched' in the order listed and group's role assigned. Please adjust the order of configuration for proper behavior by dragging and dropping the mappings to the appropriate order in the list.
