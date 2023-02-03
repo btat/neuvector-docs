@@ -1,7 +1,5 @@
 ---
 title: SAML (ADFS)
-taxonomy:
-    category: docs
 ---
 
 

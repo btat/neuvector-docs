@@ -1,7 +1,5 @@
 ---
 title: Admission Controls
-taxonomy:
-    category: docs
 ---
 
 ### Controlling Image / Container Deployments

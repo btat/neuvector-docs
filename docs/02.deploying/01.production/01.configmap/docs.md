@@ -1,7 +1,5 @@
 ---
 title: Deploy Using ConfigMap
-taxonomy:
-    category: docs
 ---
 
 ### Kubernetes ConfigMap
@@ -98,9 +96,9 @@ data:
     # Optional.
     bind_password: password
     # Optional. empty string(memberUid for openldap or member for windows ad)
-    group_member_attr: 
+    group_member_attr:
     # Optional. empty string(cn for openldap or sAMAccountName for windows ad)
-    username_attr: 
+    username_attr:
     # Optional. true or false or empty string(false)
     Enable: false
     # Optional. admin or reader or empty string(none)
@@ -152,7 +150,7 @@ data:
     # Mandatory
     Client_Secret: AyAixE3...
     # Optional. empty or string(group filter info)
-    GroupClaim:  
+    GroupClaim:
     # Optional. empty string(openid,profile,email)
     Scopes:
       - openid
@@ -214,7 +212,7 @@ data:
       ...
       -----END CERTIFICATE-----
     # Optional. empty or string(group filter info)
-    GroupClaim:  
+    GroupClaim:
     # Optional. true or false or empty string(false)
     Enable: false
     # Optional. admin or reader or empty string(none)
@@ -277,7 +275,7 @@ data:
       - event
       - security-event
       - audit
-    Syslog_in_json: 
+    Syslog_in_json:
     # Optional. true, false, empty, unconfigured.
     #  true = In Json: checkbox enabled from Settings > Configuration > Syslog
     #  false, empty, unconfigured = In Json: checkbox disabled from Settings > Configuration > Syslog
@@ -318,7 +316,7 @@ data:
     Net_Service_Policy_Mode: Discover
     Scanner_Autoscale:
     # Optional. Choose between immediate or delayed or empty string
-      Strategy: 
+      Strategy:
       Min_Pods: 1
       Max_Pods: 3
     # Optional. true or false or empty string(false)

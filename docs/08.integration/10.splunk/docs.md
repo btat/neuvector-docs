@@ -1,7 +1,5 @@
 ---
 title: Splunk
-taxonomy:
-    category: docs
 ---
 
 ### Integrating with Splunk with the NeuVector Splunk App

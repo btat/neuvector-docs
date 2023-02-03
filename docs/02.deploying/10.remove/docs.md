@@ -1,7 +1,5 @@
 ---
 title: Removing or Resetting NeuVector
-taxonomy:
-    category: docs
 ---
 
 
@@ -31,7 +29,7 @@ Exec into one of the controllers.
 kubectl exec -it <controller> -n neuvector -- sh
 ```
 
-Check that the admin entry exists and save the output json somewhere for safe keeping. 
+Check that the admin entry exists and save the output json somewhere for safe keeping.
 ```
 consul kv get object/config/user/admin
 ```

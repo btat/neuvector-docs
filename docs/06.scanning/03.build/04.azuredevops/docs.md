@@ -1,7 +1,5 @@
 ---
 title: Azure DevOps
-taxonomy:
-    category: docs
 ---
 
 ### Scan for Vulnerabilities in the Azure DevOps Build Pipeline

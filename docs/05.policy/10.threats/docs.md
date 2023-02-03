@@ -1,7 +1,5 @@
 ---
 title: Network Threat Signatures
-taxonomy:
-    category: docs
 ---
 
 ### Detecting Network Threats

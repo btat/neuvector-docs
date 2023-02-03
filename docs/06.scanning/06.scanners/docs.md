@@ -1,7 +1,5 @@
 ---
 title: Parallel & Standalone Scanners
-taxonomy:
-    category: docs
 ---
 
 ### Increase Scanner Scalability with Multiple Scanners
@@ -13,12 +11,12 @@ By default, NeuVector deploys 2 scanner pods, as part of the sample deployments 
 
 The scanner container the latest CVE database and is regularly updated (with 'latest' tag) by NeuVector. The updater redeploys the scanner, forcing a pull of the latest scanner image in order to get the latest CVE database. See the section [Updating the CVE Database](/scanning/updating) for more details on the updater.
 
-Please note that in initial releases the presence and status of multiple scanners is only visible in Kubernetes with 'kubectl get pods -n neuvector' and will not be displayed in the web console. 
+Please note that in initial releases the presence and status of multiple scanners is only visible in Kubernetes with 'kubectl get pods -n neuvector' and will not be displayed in the web console.
 
 Scan results from all scanners are shown in the Assets -> Registries menu. Additional scanner monitoring features will be added in future releases.
 
 #### Auto-scaling of Scanner Pods
-Scanner pods can be configured to auto-scale based on certain criteria. This will ensure that scanning jobs are handled quickly and efficiently, especially if there are thousands of images to be scanned or re-scanned. There are three possible settings: delayed, immediate,  and disabled. When images are queued for scanning by the controller, it keeps a 'task count' of the queue size. 
+Scanner pods can be configured to auto-scale based on certain criteria. This will ensure that scanning jobs are handled quickly and efficiently, especially if there are thousands of images to be scanned or re-scanned. There are three possible settings: delayed, immediate,  and disabled. When images are queued for scanning by the controller, it keeps a 'task count' of the queue size.
 + Delayed strategy:
   -  When lead controller continuously sees "task count" > 0 for > 90 seconds, a new scanner pod is started if maxScannerPods is not reached yet
   -  When lead controller continuously sees "task count" is 0 for > 180 seconds, it scales down one scanner pod if minScannerPods is not reached yet
@@ -53,7 +51,7 @@ NeuVector supports standalone scanner deployments for local image scanning (whic
 ```
 docker run --name neuvector.scanner --rm -e SCANNER_REPOSITORY=ubuntu -e SCANNER_TAG=16.04 -e SCANNER_ON_DEMAND=true -v /var/run/docker.sock:/var/run/docker.sock -v /var/neuvector:/var/neuvector  neuvector/scanner
 ```
-The following scanner environment variables can be used in the docker run command: 
+The following scanner environment variables can be used in the docker run command:
 
 - SCANNER_REGISTRY= url of the registry (optional instead of local scan)
 - SCANNER_REPOSITORY= repository to scan

@@ -1,12 +1,10 @@
 ---
 title: Updating NeuVector
-taxonomy:
-    category: docs
 ---
 
 ### Updating NeuVector Components
 
-It’s super easy to update your NeuVector containers. If there is a new release available, pull it from Docker Hub. It is recommended to use a ‘rolling update’ strategy to keep at least one Allinone or Controller container running at any time during an update. 
+It’s super easy to update your NeuVector containers. If there is a new release available, pull it from Docker Hub. It is recommended to use a ‘rolling update’ strategy to keep at least one Allinone or Controller container running at any time during an update.
 
 **IMPORTANT**
 
@@ -18,7 +16,7 @@ If updates are done manually or there is only one Allinone or Controller running
 
 NeuVector supports persistent data for the NeuVector policy and configuration. This configures a real-time backup to mount a volume at /var/neuvector/. The primary use case is when the persistent volume is mounted, the configuration and policy are stored during run-time to the persistent volume. In the case of total failure of the cluster, the configuration is automatically restored when the new cluster is created. Configuration and policy can also be manually restored or removed from the /var/neuvector/ volume.
 
-**IMPORTANT** 
+**IMPORTANT**
 
 If a persistent volume is not mounted, NeuVector does NOT store the configuration or policy as persistent data. Be sure to backup the Controller configuration and policy before stopping the allinone or controller container. This can be done in Settings -> Configuration. Alternatively, the controller can be deployed in an HA configuration with 3 or 5 controllers running, in which case the policy will persist with other controllers while one is being updated.
 
@@ -40,7 +38,7 @@ Note: We recommend that all NeuVector components be updated to the most recent v
 
 Orchestration tools such as Kubernetes, RedHat OpenShift, and Rancher support rolling updates with configurable policies. You can use this feature to update the NeuVector containers. The most important will be to ensure that there is at least one Allinone/Controller running so that policies, logs, and connection data is not lost. Make sure that there is a minimum of 30 seconds between container updates so that a new leader can be elected and the data synchronized between controllers.
 
-#### Sample Kubernetes Rolling Update 
+#### Sample Kubernetes Rolling Update
 
 If your Deployment or Daemonset is already running, you can change the yaml file to the new version, then apply the update:
 ```

@@ -1,7 +1,5 @@
 ---
 title: Gitlab
-taxonomy:
-    category: docs
 ---
 
 ### Scan for Vulnerabilities during Gitlab Build Pipeline
@@ -24,7 +22,7 @@ Use the following script, configured for your NeuVector login credentials to tri
 NeuVector_Scan:
   image: docker:latest
   stage: test
-  #the runner tag name is nv-scan 
+  #the runner tag name is nv-scan
   tags:
     - nv-scan
   services:
@@ -54,7 +52,7 @@ NeuVector_Scan:
     NV_SCANNING_JSON: '{"request":{"registry":"$NV_REGISTRY","username":"$NV_REGISTRY_NAME","password":"$NV_REGISTRY_PASSWORD","repository":"$NV_TO_BE_SCANNED_IMAGE_NAME","tag":"$NV_TO_BE_SCANNED_IMAGE_TAG"}}'
     NV_API_AUTH_URL: "https://$CI_SERVER_HOST:$NV_PORT/v1/auth"
     NV_API_SCANNING_URL: "https://$CI_SERVER_HOST:$NV_PORT/v1/scan/repository"
-  script: 
+  script:
     - echo "Start neuvector scanner"
     - docker run -itd --privileged --name neuvector.controller -e CLUSTER_JOIN_ADDR=$CI_SERVER_HOST -p 18301:18301 -p 18301:18301/udp -p 18300:18300 -p 18400:18400  -p $NV_PORT:$NV_PORT -v /var/neuvector:/var/neuvector -v /var/run/docker.sock:/var/run/docker.sock -v /proc:/host/proc:ro -v /sys/fs/cgroup/:/host/cgroup/:ro $NV_IMAGE
     - |

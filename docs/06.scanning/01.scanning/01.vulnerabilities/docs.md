@@ -1,7 +1,5 @@
 ---
 title: Vulnerability Management
-taxonomy:
-    category: docs
 ---
 
 ### Managing Vulnerabilities with NeuVector

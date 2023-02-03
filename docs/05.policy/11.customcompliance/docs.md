@@ -1,7 +1,5 @@
 ---
 title: Custom Compliance Checks
-taxonomy:
-    category: docs
 ---
 
 ### Creating Custom Scripts for Compliance Checks

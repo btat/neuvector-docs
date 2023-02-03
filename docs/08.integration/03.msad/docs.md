@@ -1,7 +1,5 @@
 ---
 title: Microsoft AD
-taxonomy:
-    category: docs
 ---
 
 ### Configuring Active Directory

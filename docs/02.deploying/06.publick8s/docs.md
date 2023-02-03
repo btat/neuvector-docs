@@ -1,19 +1,17 @@
 ---
 title: Public Cloud K8s AKS, EKS, GKE, IBM...
-taxonomy:
-    category: docs
 ---
 
 
 ### Deploy NeuVector on a Public Cloud Kubernetes Service
 
-Deploy NeuVector on any public cloud K8s service such as AWS EKS, Azure AKS, IBM Cloud K8s, Google Cloud, Alibaba Cloud or Oracle Cloud. 
+Deploy NeuVector on any public cloud K8s service such as AWS EKS, Azure AKS, IBM Cloud K8s, Google Cloud, Alibaba Cloud or Oracle Cloud.
 
 First, create your K8s cluster and confirm access with ‘kubectl get nodes’.
 
 To deploy NeuVector use the sample deployment instructions and examples from the Kubernetes section of the Production Deployment. Edit the sample yaml if you are pulling NeuVector images from a local or cloud registry such as ECR or ACR.
 
-Some cloud providers have integrated load balancers which are easy to deploy by using ‘Type: LoadBalancer’ instead of NodePort for the NeuVector webui. 
+Some cloud providers have integrated load balancers which are easy to deploy by using ‘Type: LoadBalancer’ instead of NodePort for the NeuVector webui.
 
 NeuVector also supports Helm-based deployment with a Helm chart at https://github.com/neuvector/neuvector-helm.
 
@@ -36,12 +34,12 @@ When deploying a k8s cluster on Azure, the default for Kubernetes RBACs is off. 
 
 You can use the integrated load balancers which are easy to deploy by using ‘Type: LoadBalancer’ instead of NodePort for the NeuVector webui. Configuring persistent storage with type RWM (read write many) may require creating a storage service such as NFS before deploying NeuVector.
 
-NeuVector requires an SDN plug-in such as flannel, weave, or calico. 
+NeuVector requires an SDN plug-in such as flannel, weave, or calico.
 
 Use the environment variable NV_PLATFORM_INFO with value platform=Kubernetes:GKE to enable NeuVector to perform GKE specific action such as running the GKE Kubernetes CIS Benchmarks.
 
 ### Handling Auto-Scaling Nodes with a Pod Disruption Budget
-Public cloud providers support the ability to auto-scale nodes, which can dynamically evict pods including the NeuVector controllers. To prevent disruptions to the controllers, a NeuVector pod disruption budget can be created. 
+Public cloud providers support the ability to auto-scale nodes, which can dynamically evict pods including the NeuVector controllers. To prevent disruptions to the controllers, a NeuVector pod disruption budget can be created.
 
 For example, create the file below nv_pdr.yaml to ensure that there are at least 2 controllers running at any time.
 ```

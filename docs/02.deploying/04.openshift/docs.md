@@ -1,7 +1,5 @@
 ---
-title: RedHat OpenShift 
-taxonomy:
-    category: docs
+title: RedHat OpenShift
 ---
 
 ### Deploy Separate NeuVector Components with RedHat OpenShift
@@ -42,7 +40,7 @@ The sample file below will deploy one manager, 3 controllers, and 2 scanner pods
 
 Next, set the route and allow privileged NeuVector containers using the instructions below. By default, OpenShift does not allow privileged containers. Also, by default OpenShift does not schedule pods on the Master node. See the instructions at the end to enable/disable this.
 
-NOTE: Please see the Enterprise Integration section for details on integration with OpenShift Role Based Access Controls (RBACs). 
+NOTE: Please see the Enterprise Integration section for details on integration with OpenShift Role Based Access Controls (RBACs).
 
 
 1) Login as a normal user
@@ -56,7 +54,7 @@ oc login -u <user_name>
 oc new-project neuvector
 ```
 
-3) Push NeuVector images to OpenShift docker registry. 
+3) Push NeuVector images to OpenShift docker registry.
  Note: For OpenShift 4.2+, change docker-registry.default.svc below to image-registry.openshift-image-registry.svc in the commands below
 ```
 docker login -u <user_name> -p `oc whoami -t` docker-registry.default.svc:5000
@@ -175,7 +173,7 @@ neuvector-binding-view                       /neuvector-binding-view            
 </head>
 <body>
 <div id="full-wrapper">
-  <ul class="dopt-accordion fixed-height arrow-tri">  
+  <ul class="dopt-accordion fixed-height arrow-tri">
 
 <!-- NOTE: Toggle Box #0.9 -->
 	<input class="title-option" id="acc090" name="accordion-1" type="checkbox" />
@@ -214,14 +212,14 @@ spec:
   selector:
     app: neuvector-controller-pod
 ```
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 </div>
 &nbsp;
 </body>
 </html>
-&nbsp; 
+&nbsp;
 Then create the appropriate service(s):
 ```
 oc create -f nv_master_worker.yaml
@@ -312,14 +310,14 @@ Also change the volumes from docker.sock to:
 
   <div class="myspacer">
 
-<!-- NOTE: Set styling for toggle boxes here (theme, arrow style, height, etc.) 
+<!-- NOTE: Set styling for toggle boxes here (theme, arrow style, height, etc.)
     Examples for alternate themes, arrow styles:
-    <ul class="dopt-accordion green fixed-height arrow-tri"> 
+    <ul class="dopt-accordion green fixed-height arrow-tri">
     <ul class="dopt-accordion modern-theme turqoisesh arrow-plus">
     <ul class="dopt-accordion modern-theme cool-blue arrow-img">
-    <ul class="dopt-accordion fixed-height arrow-tri"> 
+    <ul class="dopt-accordion fixed-height arrow-tri">
 -->
-  <ul class="dopt-accordion fixed-height arrow-tri">  
+  <ul class="dopt-accordion fixed-height arrow-tri">
 
 <!-- NOTE: Toggle Box #1, change acc1 to acc2 in two places, leave name when copying more toggle boxes -->
 <li>
@@ -673,7 +671,7 @@ spec:
               - name: CLUSTER_JOIN_ADDR
                 value: neuvector-svc-controller.neuvector
           restartPolicy: Never</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 
@@ -1029,12 +1027,12 @@ spec:
               - name: CLUSTER_JOIN_ADDR
                 value: neuvector-svc-controller.neuvector
           restartPolicy: Never</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 
 <!-- Final closing at end of all accordion boxes -->
-  </div><!-- .myspacer --> 
+  </div><!-- .myspacer -->
 </div><!-- #full-wrapper -->
 &nbsp;
 </body>
@@ -1110,7 +1108,7 @@ app: neuvector-enforcer-pod
 ```
 
 ### Updating the CVE Database on OpenShift Deployments
-The latest scanner image always contains the most recent CVE database update from NeuVector. For this reason, a version tag is not recommended when pulling the image. However, updating the CVE database requires regular pulling of the latest scanner image so the updater cron job can redeploy the scanner(s).  The samples above assume NeuVector images are pulled, tagged and pushed to a local OpenShift registry. Deployment is then from this registry instead of directly from neuvector (or the legacy NeuVector registry on docker hub). 
+The latest scanner image always contains the most recent CVE database update from NeuVector. For this reason, a version tag is not recommended when pulling the image. However, updating the CVE database requires regular pulling of the latest scanner image so the updater cron job can redeploy the scanner(s).  The samples above assume NeuVector images are pulled, tagged and pushed to a local OpenShift registry. Deployment is then from this registry instead of directly from neuvector (or the legacy NeuVector registry on docker hub).
 
 To regularly update the CVE database, we recommend a script/cron job be created to pull the latest NeuVector scanner image and perform the tagging and pushing steps to the local registry. This will ensure the CVE database is being updated regularly and images and containers are being scanned for new vulnerabilities.
 

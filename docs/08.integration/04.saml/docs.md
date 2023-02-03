@@ -1,7 +1,5 @@
 ---
 title: SAML (Okta)
-taxonomy:
-    category: docs
 ---
 
 ### SAML IDP Configuration

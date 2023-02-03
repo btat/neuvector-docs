@@ -1,7 +1,5 @@
 ---
 title: Federated Policy
-taxonomy:
-    category: docs
 ---
 
 ### Federated Policy

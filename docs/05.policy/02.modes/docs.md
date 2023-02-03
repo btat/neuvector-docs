@@ -1,7 +1,5 @@
 ---
 title: Modes: Discover, Monitor, Protect
-taxonomy:
-    category: docs
 ---
 
 ### NeuVector Modes

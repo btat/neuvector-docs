@@ -1,7 +1,5 @@
 ---
 title: IBM QRadar
-taxonomy:
-    category: docs
 ---
 
 ### Integrating with IBM Qradar

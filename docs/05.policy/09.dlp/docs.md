@@ -1,7 +1,5 @@
 ---
 title: DLP & WAF Sensors
-taxonomy:
-    category: docs
 ---
 
 ### Data Loss Prevention (DLP) and Web Application Firewall (WAF)

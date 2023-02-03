@@ -1,7 +1,5 @@
 ---
 title: Reporting
-taxonomy:
-    category: docs
 ---
 
 # Reporting

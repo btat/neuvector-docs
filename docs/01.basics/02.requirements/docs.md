@@ -1,7 +1,5 @@
 ---
 title: System Requirements
-taxonomy:
-    category: docs
 ---
 
 #### System Requirements

@@ -1,7 +1,5 @@
 ---
 title: Improve Security Risk Score
-taxonomy:
-    category: docs
 ---
 
 ### Improving the Security Risk Score

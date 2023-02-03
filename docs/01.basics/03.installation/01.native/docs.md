@@ -1,7 +1,5 @@
 ---
 title: Deployment Preparation
-taxonomy:
-    category: docs
 ---
 
 ### Understanding How to Deploy NeuVector

@@ -1,7 +1,5 @@
 ---
 title: AWS ECS
-taxonomy:
-    category: docs
 ---
 
 ### Important: Deployment on AWS ECS is No Longer Supported

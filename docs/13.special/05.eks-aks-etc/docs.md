@@ -1,19 +1,17 @@
 ---
 title: Example: Public Cloud K8s EKS, AKS, GKE, IBM ...
-taxonomy:
-    category: docs
 ---
 
 
 ### Deploy NeuVector on a Public Cloud Kubernetes Service
 
-Deploy NeuVector on any public cloud K8s service such as AWS EKS, Azure AKS, IBM Cloud K8s, Google Cloud, Alibaba Cloud or Oracle Cloud. 
+Deploy NeuVector on any public cloud K8s service such as AWS EKS, Azure AKS, IBM Cloud K8s, Google Cloud, Alibaba Cloud or Oracle Cloud.
 
 First, create your K8s cluster and confirm access with ‘kubectl get nodes’.
 
 To deploy NeuVector use the sample deployment instructions and examples from the Kubernetes section of either the Deployment Examples or Production Deployment sections. Edit the sample yaml if you are pulling NeuVector images from a local or cloud registry such as ECR or ACR.
 
-Some cloud providers have integrated load balancers which are easy to deploy by using ‘Type: LoadBalancer’ instead of NodePort for the NeuVector webui. 
+Some cloud providers have integrated load balancers which are easy to deploy by using ‘Type: LoadBalancer’ instead of NodePort for the NeuVector webui.
 
 NeuVector also supports Helm-based deployment with a Helm chart at https://github.com/neuvector/neuvector-helm.
 

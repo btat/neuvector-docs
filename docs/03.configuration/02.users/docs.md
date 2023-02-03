@@ -1,7 +1,5 @@
 ---
 title: Users and Roles
-taxonomy:
-    category: docs
 ---
 
 ### Configuring Users and Custom Roles

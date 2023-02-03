@@ -1,7 +1,5 @@
 ---
 title: Navigating the Console
-taxonomy:
-    category: docs
 ---
 
 ### Console Access

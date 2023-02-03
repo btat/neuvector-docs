@@ -1,7 +1,5 @@
 ---
 title: Replacing Internal Certificates
-taxonomy:
-    category: docs
 ---
 
 ### Internal Communication and Certificates
@@ -100,6 +98,6 @@ helm repo update
 # add domain for ingress
 export domain=awesome.sauce
 
-# run the helm 
+# run the helm
 helm upgrade -i neuvector -n neuvector neuvector/core --create-namespace  --set imagePullSecrets=regsecret --set k3s.enabled=true --set k3s.runtimePath=/run/k3s/containerd/containerd.sock --set manager.ingress.enabled=true --set manager.ingress.host=neuvector.$domain --set manager.svc.type=ClusterIP --set controller.pvc.enabled=true --set controller.pvc.capacity=500Mi --set controller.internal.certificate.secret=internal-cert --set cve.scanner.internal.certificate.secret=internal-cert --set enforcer.internal.certificate.secret=internal-cert
 ```

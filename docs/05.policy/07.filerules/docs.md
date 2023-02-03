@@ -1,7 +1,5 @@
 ---
 title: File Access Rules
-taxonomy:
-    category: docs
 ---
 
 ### Policy: File Access Rules

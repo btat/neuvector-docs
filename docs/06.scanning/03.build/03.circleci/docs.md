@@ -1,7 +1,5 @@
 ---
 title: CircleCI
-taxonomy:
-    category: docs
 ---
 
 ### Scan for Vulnerabilities in the CircleCI Build Pipeline

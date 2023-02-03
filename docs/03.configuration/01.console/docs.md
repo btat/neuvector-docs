@@ -1,7 +1,5 @@
 ---
 title: Connect to Manager, REST API server
-taxonomy:
-    category: docs
 ---
 
 ### Connect to UI

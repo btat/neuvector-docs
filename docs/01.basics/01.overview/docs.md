@@ -1,7 +1,5 @@
 ---
 title: 5.x Overview
-taxonomy:
-    category: docs
 ---
 
 

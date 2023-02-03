@@ -1,7 +1,5 @@
 ---
 title: 4.x Release Notes
-taxonomy:
-    category: docs
 ---
 
 

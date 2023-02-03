@@ -1,7 +1,5 @@
 ---
 title: Bamboo
-taxonomy:
-    category: docs
 ---
 
 ### Scan for Vulnerabilities during Bamboo Build Pipeline

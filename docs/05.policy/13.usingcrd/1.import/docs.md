@@ -1,7 +1,5 @@
 ---
 title: Importing CRD from Console
-taxonomy:
-    category: docs
 ---
 
 ### Importing a CRD format file from the Console or API

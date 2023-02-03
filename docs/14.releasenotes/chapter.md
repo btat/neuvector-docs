@@ -1,7 +1,5 @@
 ---
 title: Release Notes
-taxonomy:
-    category: docs
 ---
 
 # Release Notes

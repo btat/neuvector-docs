@@ -1,7 +1,5 @@
 ---
 title: Security Policy
-taxonomy:
-    category: docs
 ---
 
 # Security Policy & Rules

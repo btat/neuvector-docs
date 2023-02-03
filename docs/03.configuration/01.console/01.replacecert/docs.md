@@ -1,14 +1,12 @@
 ---
 title: Replacing Self-Signed Certificate
-taxonomy:
-    category: docs
 ---
 
 ### Replacing the Self-Signed Certificate with PKCS Certificate for External Access
 
 The built-in self-signed certificate used for external access from a browser to the Manager or for the REST API to the Controller can be replaced by a supported PKCS certificate. These should be replaced in both the Manager and Controller deployments. Note: To replace the included certificates for Internal communication between the Controller, Enforcer, and Scanner, please see [this section](/deploying/production/internal/).
 
-The NeuVector web console supports 2 different self-signed certificate types, specifically, the PKCS8 (Private-Key Information Syntax Standard) and PKCS1 (RSA Cryptography Standard).  The self-signed certificate can be replaced with either of these PKCS types.  
+The NeuVector web console supports 2 different self-signed certificate types, specifically, the PKCS8 (Private-Key Information Syntax Standard) and PKCS1 (RSA Cryptography Standard).  The self-signed certificate can be replaced with either of these PKCS types.
 
 The steps to generate the secret that will be consumed by NeuVector’s web console originating from the key and certificate using either of the PKCS methods will be illustrated below.  The important note here is, with the use of the wildcard for the DNS as being part of the alternate-subject-name parameter during the key and certificate creation, this enables the name of your choosing to be mapped to the Management console IP-Address without restricting to a particular CN.
 
@@ -16,7 +14,7 @@ The steps to generate the secret that will be consumed by NeuVector’s web cons
 
 1. Create a key and certificate
 
-##### PKCS8 
+##### PKCS8
 ```
 openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout tls.key -out tls.pem -config ca.cfg -extensions 'v3_req'
 Sample ca.cfg

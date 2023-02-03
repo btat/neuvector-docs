@@ -1,7 +1,5 @@
 ---
 title: REST API and Automation
-taxonomy:
-    category: docs
 ---
 
 ### NeuVector Automation
@@ -240,7 +238,7 @@ $ curl -s -k -H 'Content-Type: application/json' -H 'X-Auth-Token: $_TOKEN_' -d 
 
 Then check the EULA again.
 
-#### Configure Registry Scanning 
+#### Configure Registry Scanning
 
 ```
 curl -k -H "Content-Type: application/json" -H "X-Auth-Token: $_TOKEN_" -d '{"request": {"registry": "https://registry.connect.redhat.com", "username": "username", "password": "password", "tag": "latest", "repository": "neuvector/enforcer"}}' "https://controller:port/v1/scan/repository"
@@ -410,7 +408,7 @@ while :; do
             0)
                 exit 0;
                 ;;
-            1)  
+            1)
                 counter=0
                 declare -a sniffs;
                 for pods in "${workloads[@]}"; do
@@ -492,7 +490,7 @@ curl  -k -H "Content-Type: application/json" -H "X-Auth-Token: $_TOKEN_"  "https
 cat system_setting.json | jq .config.controller_debug
 ```
 
-Logout 
+Logout
 ```
 echo `date +%Y%m%d_%H%M%S` log out
 curl -k -X 'DELETE' -H "Content-Type: application/json" -H "X-Auth-Token: $_TOKEN_" "https://$_controllerIP_:$_controllerRESTAPIPort_/v1/auth" > /dev/null 2>&1
@@ -506,7 +504,7 @@ curl -k -H "Content-Type: application/json" -H "X-Auth-Token: $_TOKEN_" -d '{"re
 {noformat}
 ```
 
-<strong>Limitations:</strong> If the image to be scanned is a remote image, with "registry" specified, the base image must also be a remote image, and the name must start with http or https.  If the image to be scanned is a local image, then the base image must also be a local image as well. 
+<strong>Limitations:</strong> If the image to be scanned is a remote image, with "registry" specified, the base image must also be a remote image, and the name must start with http or https.  If the image to be scanned is a local image, then the base image must also be a local image as well.
 For example,
 ```
 {"request": {"repository": "neuvector/manager", "tag": "4.0.2", "scan_layers": true, "base_image": "alpine:3.12.0"}}

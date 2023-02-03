@@ -1,7 +1,5 @@
 ---
 title: Enterprise Multi-Cluster Management
-taxonomy:
-    category: docs
 ---
 
 ### Enterprise Console

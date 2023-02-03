@@ -1,7 +1,5 @@
 ---
 title: Deploy Using Operators
-taxonomy:
-    category: docs
 ---
 
 

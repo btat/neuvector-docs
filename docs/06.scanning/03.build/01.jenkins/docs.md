@@ -2,8 +2,6 @@
 
 ---
 title: Jenkins Details
-taxonomy:
-    category: docs
 ---
 
 ### Detailed Configuration for the Jenkins Plugin

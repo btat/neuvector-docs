@@ -1,7 +1,5 @@
 ---
 title: Reporting & Notifications
-taxonomy:
-    category: docs
 ---
 
 ### Reporting

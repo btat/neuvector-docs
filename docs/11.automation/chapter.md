@@ -1,7 +1,5 @@
 ---
 title: Workflow & Automation
-taxonomy:
-    category: docs
 ---
 
 # Automating NeuVector

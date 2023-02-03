@@ -1,7 +1,5 @@
 ---
 title: Security Policy Overview
-taxonomy:
-    category: docs
 ---
 
 ### NeuVector Security Policy

@@ -1,7 +1,5 @@
 ---
 title: Registry Scanning Configuration
-taxonomy:
-    category: docs
 ---
 
 

@@ -1,7 +1,5 @@
 ---
 title: Rancher Deployment
-taxonomy:
-    category: docs
 ---
 
 ### Deploy and Manage NeuVector through Rancher Apps & Marketplace

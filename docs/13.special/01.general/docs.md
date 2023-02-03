@@ -1,7 +1,5 @@
 ---
 title: General Guidelines
-taxonomy:
-    category: docs
 ---
 
 
@@ -11,7 +9,7 @@ The examples in this section deploy the Allinone and Enforcer containers. This i
 ### General Guidelines for Deployment
 Prepare your host environment for proper installation. Make sure the NeuVector containers can communicate with each other between hosts. Then review and edit the sample files for you environment.
 
-Generally, it is important to do the following: 
+Generally, it is important to do the following:
 1. Label nodes appropriately. If you use node labels to control where the allinone or controller is deployed, label them before deploying.
 2. Make sure volumes can be mapped properly. For example
 ```

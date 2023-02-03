@@ -1,7 +1,5 @@
 ---
 title: Integrations & Other Components
-taxonomy:
-    category: docs
 ---
 
 ### Release Notes for Integration Modules, Plug-Ins, Other Components
@@ -46,7 +44,7 @@ taxonomy:
     work around: update scanner image to registry.connect.redhat.com/neuvector/scanner@sha256:a802c012eee80444d9deea8c4402a1d977cf57d7b2b2044f90c9acc0e7ca3e06 on scanner deployment
   - readme document on install page not aligned properly
   - scanner db is not updated by updater
-image.png 
+image.png
 
 #### Helm Chart update 1.8.0 July 2021
 +Helm Chart  v1.8.0 is updated to default to registry.neuvector.com as the default registry. NOTE: Must specify the version tag manually.
@@ -97,7 +95,7 @@ https://plugins.jenkins.io/neuvector-vulnerability-scanner/
 https://github.com/jenkinsci/neuvector-vulnerability-scanner-plugin/releases/tag/neuvector-vulnerability-scanner-1.11
 
 #### Rancher Catalog Updates January 2021
-+ Update NeuVector in Rancher catalog to support 4.x 
++ Update NeuVector in Rancher catalog to support 4.x
 
 #### Helm Chart Updates January 2021
 + Create required NeuVector CRDs upon deployment

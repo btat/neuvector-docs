@@ -1,7 +1,5 @@
 ---
 title: Network Rules
-taxonomy:
-    category: docs
 ---
 
 ### Policy: Network Rules
@@ -38,7 +36,7 @@ Note: To select Any/All, leave this field blank
 Note: To select Any/All, leave this field blank
 
 + **Deny/Allow**
-> Indicate whether this rule is to Allow this type of connection, or Deny it. 
+> Indicate whether this rule is to Allow this type of connection, or Deny it.
 
 If Deny is selected, NeuVector will log this as a violation while in Monitor mode, and will block this while in Protect mode. The default action is to Deny a connection (log violation only if in Monitor mode) if no rule matches it.
 
@@ -52,7 +50,7 @@ To allow containers to connect to services on other internal networks, first cre
 
 1. Create a Group. In Policy -> Groups, click to add a new Group. Name the group (e.g. internal) then specify the criteria for the group. For example, specify the DNS name, IP address or address range of the internal services. Save the new group.
 
-2. Create a Rule. In Policy -> Rules, click to add a new rule. Select the group representing the container From which the connections will originate, then the To group (e.g. internal). You can further refine the rule with specific protocols or ports, or leave blank. Make sure the selector is set to Allow (green). 
+2. Create a Rule. In Policy -> Rules, click to add a new rule. Select the group representing the container From which the connections will originate, then the To group (e.g. internal). You can further refine the rule with specific protocols or ports, or leave blank. Make sure the selector is set to Allow (green).
 
 Be sure to click Deploy to save the new rule.
 
@@ -88,7 +86,7 @@ NeuVector includes the following detections for threats:
 + ICMP tunneling attack
 + IP Teardrop attack
 + Kubernetes man-in-the-middle attack per CVE-2020-8554
-+ PING death attack 
++ PING death attack
 + SQL injection attack
 + SSL heartbleed attack
 + SYN flood attack

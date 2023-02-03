@@ -1,7 +1,5 @@
 ---
 title: 5.x Release Notes
-taxonomy:
-    category: docs
 ---
 
 ### Release Notes for 5.x (Open Source Version)
@@ -9,7 +7,7 @@ taxonomy:
 #### 5.1.0 December, 2022
 
 ##### Enhancements
-+ Centralized, multi-cluster scanning (CVE) database. The primary (master) cluster can scan a registry/repo designated as a federated registry. The scan results from these registries will be synchronized to all managed (remote) clusters. This enables display of scan results in the managed cluster console as well as use of the results in admission control rules of the managed cluster. Registries only need to be scanned once instead of by each cluster, reducing CPU/memory and network bandwidth usage. 
++ Centralized, multi-cluster scanning (CVE) database. The primary (master) cluster can scan a registry/repo designated as a federated registry. The scan results from these registries will be synchronized to all managed (remote) clusters. This enables display of scan results in the managed cluster console as well as use of the results in admission control rules of the managed cluster. Registries only need to be scanned once instead of by each cluster, reducing CPU/memory and network bandwidth usage.
 + Enhance admission control rules:
   - Custom criteria for admission control rules. Allow users to define resource criteria on all pod related fields and to be used in rules, for example item.metadata.annotationsKey contains 'neuvector', item.metadata.name='xyzzy' etc.
   - Add criteria to check for high risk RBAC settings for service accounts when deploying pods. These include criteria 'any action of workload resources', 'any action on RBAC', 'create workload resources', 'listing secrets', and 'exec into a container'.
@@ -29,7 +27,7 @@ taxonomy:
 + Add ability to hide selected namespaces, groups in Network Activity view.
 + Full support for Cilium cni.
 + Full support of OpenShift 4.9 and 4.10.
-+ Build tools are now available for the NeuVector/Open Zero Trust (OZT) project at https://github.com/openzerotrust/openzerotrust.io. 
++ Build tools are now available for the NeuVector/Open Zero Trust (OZT) project at https://github.com/openzerotrust/openzerotrust.io.
 + NeuVector now lists the version ID and SHA256 digest for each version of the controller, manager, enforcer at https://github.com/neuvector/manifests/tree/main/versions.
 + Anonymous telemetry data (number of nodes, groups, rules) is now reported to a Rancher cloud service upon deployment to assist the project team in understanding usage behavior. This can be disabled (opt-out) in UI or with configMap (No_Telemetry_Report) or REST API.
 + (Addendum January 2023). Support for ServiceEntry based network policy with Istio. Egress network policy enforcement functionality was added in version 5.1.0 for pods to ServiceEntry destinations declared with Istio. Typically, a ServiceEntry defines how an external service referred by DNS name is resolved to a destination IP. Prior to v5.1, NeuVector could not detect and enforce rules for connections to a ServiceEntry, so all connections were classified as External. With 5.1, rules can be enforced for specific ServiceEntry destinations. IMPORTANT: If you are upgrading to v5.1 with an Istio based deployment, new rules must be created to allow these connections and avoid violation alerts. After upgrading, Implicit violations will get reported for newly visible traffic if allow rules don't exist. New traffic rules can be learned and auto-created under Discover mode. To allow this traffic, you can put the group into discover mode or create a custom group with addresses (or DNS name) and new network rule to this destination to allow the traffic. NOTE: There is a bug in 5.1.0 in the destination reported by the deny violations that do not represent the correct destination.  The bug reports both server_name and client_name are the same.  This issue will get addressed in an upcoming patch release.
@@ -75,7 +73,7 @@ taxonomy:
 ##### Bug Fixes
 + Enforcer unable to start occasionally.
 + Connection leak on multi-cluster federation environments.
-+ Compliance page not loading some times in Security Risks -> Compliance 
++ Compliance page not loading some times in Security Risks -> Compliance
 
 #### 5.0.2 July 2022
 ##### Enhancements
@@ -94,7 +92,7 @@ taxonomy:
 + Verify NeuVector deployment and support for SELinux enabled hosts. See below for details on interim patching until helm chart is updated.
 + Distinguish between Feature Chart and Partner Charts in Rancher UI more prominently.+ Improve ingress annotation for nginx in Rancher helm chart. Add / update
 ingress.kubernetes.io/protocol: https to nginx.ingress.kubernetes.io/backend-protocol: "HTTPS".
-+ Current OpenShift Operator supports passthrough routes for api and federation services. Additional Helm Value parameters are added to support edge and re-encrypt route termination types. 
++ Current OpenShift Operator supports passthrough routes for api and federation services. Additional Helm Value parameters are added to support edge and re-encrypt route termination types.
 
 ##### Bug Fixes
 + AKS cluster could add unexpected key in admission control webhook.
@@ -162,7 +160,7 @@ neuvector-scanner-pod-87474dcff-s8vgt       1/1     Running   0          114s   
 + Zero-drift process and file protection. This is the new default mode for process and file protections. Zero-drift automatically allows only processes which originate from the parent process that is in the original container image, and does not allow file updates or new files to be installed. When in Discover or Monitor mode, zero-drift will alert on any suspicious process or file activity. In Protect mode, it will block such activity. Zero-drift does not require processes to be learned or added to an allow-list. Disabling zero-drift for a group will cause the process and file rules listed for the group to take effect instead.
 + Split policy mode protection for network, process/file. There is now a global setting available in Settings -> Configuration to separately set the network protection mode for enforcement of network rules. Enabling this (default is disabled), causes all network rules to be in the protection mode selected (Discover, Monitor, Protect), while process/file rules remain in the protection mode for that Group, as displayed in the Policy -> Groups screen. In this way, network rules can be set to Protect (blocking), while process/file policy can be set to Monitor, or vice versa.
 + WAF rule detection, enhanced DLP rules (header, URL, full packet). Used for ingress connections to web application pods as well as outbound connections to api-services to enforce api security.
-+ CRD for WAF, DLP and admission controls. NOTE: required additional cluster role bindings/permissions. See Kubernetes and OpenShift deployment sections. CRD import/export and versioning for admission controls supported through CRD. 
++ CRD for WAF, DLP and admission controls. NOTE: required additional cluster role bindings/permissions. See Kubernetes and OpenShift deployment sections. CRD import/export and versioning for admission controls supported through CRD.
 + Rancher SSO integration to launch NeuVector console through Rancher Manager. This feature is only available if the NeuVector containers are deployed through Rancher. This deployment pulls from the mirrored Rancher repository (e.g. rancher/mirrored-neuvector-controller:5.0.0) and deploys into the cattle-neuvector-system namespace. NOTE: Requires updated Rancher release 2.6.5 May 2022 or later, and only admin and cluster owner roles are supported at this time.
 + Supports deployment on RKE2.
 + Support for Federation of clusters (multi-cluster manager) through a proxy. Configure proxy in Settings -> Configuration, and enable proxy when configuring federation connections.
@@ -265,7 +263,7 @@ kubectl create clusterrolebinding neuvector-binding-nvdlpsecurityrules --cluster
 + Zero-drift process and file protection. This is the new default mode for process and file protections. Zero-drift automatically allows only processes which originate from the parent process that is in the original container image, and does not allow file updates or new files to be installed. When in Discover or Monitor mode, zero-drift will alert on any suspicious process or file activity. In Protect mode, it will block such activity. Zero-drift does not require processes to be learned or added to an allow-list. Disabling zero-drift for a group will cause the process and file rules listed for the group to take effect instead.
 + Split policy mode protection for network, process/file. There is now a global setting available in Settings -> Configuration to separately set the network protection mode for enforcement of network rules. Enabling this (default is disabled), causes all network rules to be in the protection mode selected (Discover, Monitor, Protect), while process/file rules remain in the protection mode for that Group, as displayed in the Policy -> Groups screen. In this way, network rules can be set to Protect (blocking), while process/file policy can be set to Monitor, or vice versa.
 + WAF rule detection, enhanced DLP rules (header, URL, full packet)
-+ CRD for WAF, DLP and admission controls. NOTE: required additional cluster role bindings/permissions. See Kubernetes and OpenShift deployment sections. CRD import/export and versioning for admission controls supported through CRD. 
++ CRD for WAF, DLP and admission controls. NOTE: required additional cluster role bindings/permissions. See Kubernetes and OpenShift deployment sections. CRD import/export and versioning for admission controls supported through CRD.
 + Rancher SSO integration to launch NeuVector console through Rancher Manager. This feature is only available if the NeuVector containers are deployed through Rancher. NOTE: Requires updated Rancher release (date/version TBD).
 + Supports deployment on RKE2.
 + Support for Federation of clusters (multi-cluster manager) through a proxy.

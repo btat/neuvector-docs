@@ -1,7 +1,5 @@
 ---
 title: Deploying NeuVector
-taxonomy:
-    category: docs
 ---
 
 ### Planning Deployments

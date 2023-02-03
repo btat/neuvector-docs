@@ -1,7 +1,5 @@
 ---
 title: Docker & Mirantis Kubernetes Engine
-taxonomy:
-    category: docs
 ---
 
 ### Kubernetes Deployment on Mirantis Kubernetes Engine
@@ -12,9 +10,9 @@ Note: NeuVector does not support mixed Kubernetes / Swarm clusters.
 
 ### Deploy NeuVector Containers Using Docker Native or UCP/Swarm
 
-Note that native Docker deployment on Mirantis Kubernetes Engine using Swarm DOES NOT support deployment of services with containers in privileged mode, or with seccomp capabilities added. To deploy in this environment, you must use Docker Compose or Run to deploy the NeuVector containers. You can use the remote host deployment (docker-compose -H HOST) to make this task easier. 
+Note that native Docker deployment on Mirantis Kubernetes Engine using Swarm DOES NOT support deployment of services with containers in privileged mode, or with seccomp capabilities added. To deploy in this environment, you must use Docker Compose or Run to deploy the NeuVector containers. You can use the remote host deployment (docker-compose -H HOST) to make this task easier.
 
-Here are the sample docker compose configuration files. Note that using docker native does not support deploying the enforcer on the same node as the controller, requiring the use of the Allinone container if controller and enforcer functions are desired on a node. 
+Here are the sample docker compose configuration files. Note that using docker native does not support deploying the enforcer on the same node as the controller, requiring the use of the Allinone container if controller and enforcer functions are desired on a node.
 
 Note: The environment variable NV_PLATFORM_INFO=platform=Docker is used to notify NeuVector that the platform is Docker/Swarm, even though there may be unused Kubernetes containers detected by NeuVector on a Docker EE deployment. Also to be able to see these in Network Activity -> View -> Show System, add the environment variable for the Enforcer NV_SYSTEM_GROUPS.
 
@@ -285,7 +283,7 @@ neuvector/enforcer:<version>
 ```
 
 ### Deploy Separate NeuVector Components on Different Hosts
-If planning to dedicate a docker host to a Controller and/or Manager (no Enforcer) these containers can be deployed individually instead of the Allinone. Note that docker does not support deploying the enforcer on the same node as the controller as separate components, requiring the use of the Allinone container if controller and enforcer functions are desired on a node. 
+If planning to dedicate a docker host to a Controller and/or Manager (no Enforcer) these containers can be deployed individually instead of the Allinone. Note that docker does not support deploying the enforcer on the same node as the controller as separate components, requiring the use of the Allinone container if controller and enforcer functions are desired on a node.
 
 
 Controller compose file (replace [controller IP] with IP of the first controller node)

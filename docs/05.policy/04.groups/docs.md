@@ -1,7 +1,5 @@
 ---
 title: Groups
-taxonomy:
-    category: docs
 ---
 
 ### Policy: Groups

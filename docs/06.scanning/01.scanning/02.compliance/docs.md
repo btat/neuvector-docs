@@ -1,7 +1,5 @@
 ---
 title: Compliance & CIS Benchmarks
-taxonomy:
-    category: docs
 ---
 
 ### Managing Compliance and CIS Benchmarks

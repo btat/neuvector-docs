@@ -1,7 +1,5 @@
 ---
 title: Configuration Assessment for Kubernetes Resources
-taxonomy:
-    category: docs
 ---
 
 ### Kubernetes Resource Deployment File Scanning

@@ -1,7 +1,5 @@
 ---
 title: NeuVector Workflow
-taxonomy:
-    category: docs
 ---
 
 ### NeuVector Integration into CI/CD Workflow

@@ -1,7 +1,5 @@
 ---
 title: Evaluating and Testing NeuVector
-taxonomy:
-    category: docs
 ---
 
 ### Sample Applications

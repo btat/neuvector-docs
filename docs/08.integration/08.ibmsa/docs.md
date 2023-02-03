@@ -1,7 +1,5 @@
 ---
 title: IBM Security Advisor
-taxonomy:
-    category: docs
 ---
 
 ### Integrating with IBM Security Advisor

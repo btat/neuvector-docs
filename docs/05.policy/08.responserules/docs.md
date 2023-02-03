@@ -1,7 +1,5 @@
 ---
 title: Response Rules
-taxonomy:
-    category: docs
 ---
 
 ### Policy: Response Rules

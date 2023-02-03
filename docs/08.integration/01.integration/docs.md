@@ -1,7 +1,5 @@
 ---
 title: Enterprise Integration
-taxonomy:
-    category: docs
 ---
 
 ### Integration

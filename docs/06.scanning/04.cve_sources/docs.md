@@ -1,7 +1,5 @@
 ---
 title: CVE Database Sources & Version
-taxonomy:
-    category: docs
 ---
 
 ###NeuVector Vulnerability (CVE) Database
@@ -59,8 +57,8 @@ docker exec scanner scanner -v -d /etc/neuvector/db/
 ###CVE Database Sources
 
 
-| Source | URL | 
-| ------ | --------------------------------------------------- | 
+| Source | URL |
+| ------ | --------------------------------------------------- |
 |nvd and Mitre |https://nvd.nist.gov/feeds/json/cve/1.1 |
 |SUSE linux |https://ftp.suse.com/pub/projects/security/oval/ |
 |ubuntu |https://launchpad.net/ubuntu-cve-tracker  |

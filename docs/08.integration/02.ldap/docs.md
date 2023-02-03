@@ -1,7 +1,5 @@
 ---
 title: LDAP
-taxonomy:
-    category: docs
 ---
 
 ### LDAP

@@ -1,12 +1,10 @@
 ---
 title: Mirantis Kubernetes Engine
-taxonomy:
-    category: docs
 ---
 
 
 ### Mirantis Kubernetes Engine
-Deploy to Kubernetes using the [Kubernetes Allinone](/special/kubernetes) section. 
+Deploy to Kubernetes using the [Kubernetes Allinone](/special/kubernetes) section.
 
 ### Deploy to Swarm Cluster
 It’s simple to deploy NeuVector using a Swarm cluster. First, pull the NeuVector images using Docker UCP in the Images menu. You may need to add a version number to get the latest version on Docker Hub.

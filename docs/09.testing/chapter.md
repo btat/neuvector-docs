@@ -1,7 +1,5 @@
 ---
 title: Testing NeuVector
-taxonomy:
-    category: docs
 ---
 
 # Testing

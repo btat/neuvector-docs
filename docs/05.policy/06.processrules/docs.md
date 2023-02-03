@@ -1,7 +1,5 @@
 ---
 title: Process Profile Rules
-taxonomy:
-    category: docs
 ---
 
 ### Policy -> Groups -> Process Profile Rules

@@ -1,12 +1,10 @@
 ---
 title: OpenShift (Allinone)
-taxonomy:
-    category: docs
 ---
 
 
 ### Deploy Using RedHat OpenShift
-NeuVector is compatible with standard ovs SDN plug-ins as well as others such as flannel, weave, or calico. The samples below assume a standard ovs plug-in is used. This also assumes a local docker registry will be used. The default yaml deployment deploys one allinone on a labeled node and enforcers on all others, including the master. 
+NeuVector is compatible with standard ovs SDN plug-ins as well as others such as flannel, weave, or calico. The samples below assume a standard ovs plug-in is used. This also assumes a local docker registry will be used. The default yaml deployment deploys one allinone on a labeled node and enforcers on all others, including the master.
 
 First, pull the appropriate NeuVector containers from the NeuVector registry into your local registry.
 
@@ -21,7 +19,7 @@ docker pull docker.io/neuvector/updater
 Next, tag/push the containers, set the route and allow privileged NeuVector containers using the instructions below. By default, OpenShift does not allow privileged containers. Also, by default OpenShift does not schedule pods on the Master node. See the instructions at the end to enable/disable this.
 
 
-NOTE: Please see the Enterprise Integration section for details on integration with OpenShift Role Based Access Controls (RBACs). 
+NOTE: Please see the Enterprise Integration section for details on integration with OpenShift Role Based Access Controls (RBACs).
 
 1. Login as a normal user
 ```
@@ -63,7 +61,7 @@ The following info will be added in the Privileged SCC
 users:
 - system:serviceaccount:neuvector:default
 
-6. Add read permission to access the kubernetes API and OpenShift RBACs. Admission control is supported in OpenShift 3.9+. 
+6. Add read permission to access the kubernetes API and OpenShift RBACs. Admission control is supported in OpenShift 3.9+.
 ```
 oc create clusterrole neuvector-binding-app --verb=get,list,watch,update --resource=nodes,pods,services,namespaces
 oc create clusterrole neuvector-binding-rbac --verb=get,list,watch --resource=rolebindings.rbac.authorization.k8s.io,roles.rbac.authorization.k8s.io,clusterrolebindings.rbac.authorization.k8s.io,clusterroles.rbac.authorization.k8s.io,imagestreams.image.openshift.io

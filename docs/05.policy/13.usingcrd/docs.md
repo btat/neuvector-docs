@@ -1,7 +1,5 @@
 ---
 title: CRD - Custom Resource Definitions
-taxonomy:
-    category: docs
 ---
 
 ### NeuVector CRD for Policy As Code

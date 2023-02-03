@@ -1,7 +1,5 @@
 ---
 title: Updating the CVE Database
-taxonomy:
-    category: docs
 ---
 
 ### Updating the NeuVector CVE Vulnerability Database
@@ -57,7 +55,7 @@ Note: If the allinone container was deployed instead of the controller, replace 
 
 To run the cron job
 ```
-kubectl create -f neuvector-updater.yaml 
+kubectl create -f neuvector-updater.yaml
 ```
 
 

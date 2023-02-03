@@ -1,7 +1,5 @@
 ---
 title: Environment Variables Details
-taxonomy:
-    category: docs
 ---
 
 ### Environment Variables
@@ -32,7 +30,7 @@ taxonomy:
 * DISABLE_PACKET_CAPTURE
 > (Optional) Add this to the yaml to disable packet capture; remove to re-enable (default).
 
-* NO_DEFAULT_ADMIN 
+* NO_DEFAULT_ADMIN
 > (Optional) When enabled does not create an 'admin' user in the local cluster. This is used for Rancher SSO integration as the default. If not enabled, persistently warn the user and record events to change the default admin password if it is not changed from default.
 
 

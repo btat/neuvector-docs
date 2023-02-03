@@ -1,7 +1,5 @@
 ---
 title: Air Gapping NeuVector
-taxonomy:
-    category: docs
 ---
 
 ### Tools Needed
@@ -45,7 +43,7 @@ You should now see a file like `core-2.4.0.tgz`. The version may vary, but this 
 helm template neuvector/core-*.tgz | awk '$1 ~ /image:/ {print $2}' | sed -e 's/\"//g' > neuvector/images/list.txt
 
 # get images
-for i in $(cat neuvector/images/list.txt); do 
+for i in $(cat neuvector/images/list.txt); do
   skopeo copy docker://$i docker-archive:neuvector/images/$(echo $i| awk -F/ '{print $3}'|sed 's/:/_/g').tar:$(echo $i| awk -F/ '{print $3}')
 done
 ```
@@ -95,7 +93,7 @@ Loading the images into a registry is going to require an understanding of your 
 ```bash
 # skopeo load
 export REGISTRY=registry.awesome.sauce
-for file in $(ls neuvector/images | grep -v txt ); do 
+for file in $(ls neuvector/images | grep -v txt ); do
      skopeo copy docker-archive:neuvector/images/$file docker://$(echo $file | sed 's/.tar//g' | awk -F_ '{print "'$REGISTRY'/neuvector/"$1":"$2}')
 done
 ```

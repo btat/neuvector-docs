@@ -1,11 +1,9 @@
 ---
 title: Kubernetes (Allinone)
-taxonomy:
-    category: docs
 ---
 
 ### Deploy Using Kubernetes
-NeuVector requires and supports Kubernetes network plug-ins such as flannel, weave, or calico. 
+NeuVector requires and supports Kubernetes network plug-ins such as flannel, weave, or calico.
 
 You can use Kubernetes to deploy the allinone and enforcer and make sure that all new nodes have an enforcer deployed. Sample files follow the commands below. There is a separate section for OpenShift instructions, and Docker EE on Kubernetes has some special steps described in the Docker section. For a more production ready deployment using multiple controllers, see the Production Deployment section.
 
@@ -16,7 +14,7 @@ Note: This sample section does not include creating the NeuVector Customer Resou
 <pre>
 <code>kubectl create namespace neuvector</code></pre>
 </li>
-<li>Add read permission to access the kubernetes API. RBAC is supported in kubernetes 1.8+ officially. Admission control is supported in kubernetes 1.9+. 
+<li>Add read permission to access the kubernetes API. RBAC is supported in kubernetes 1.8+ officially. Admission control is supported in kubernetes 1.9+.
 <pre>
 <code>kubectl create clusterrole neuvector-binding-app --verb=get,list,watch,update --resource=nodes,pods,services,namespaces
 kubectl create clusterrole neuvector-binding-rbac --verb=get,list,watch --resource=rolebindings.rbac.authorization.k8s.io,roles.rbac.authorization.k8s.io,clusterrolebindings.rbac.authorization.k8s.io,clusterroles.rbac.authorization.k8s.io

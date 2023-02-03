@@ -1,7 +1,5 @@
 ---
 title: Deploying NeuVector 5.x
-taxonomy:
-    category: docs
 ---
 
 # Deployments of the NeuVector Containers, Services, and Required Configurations

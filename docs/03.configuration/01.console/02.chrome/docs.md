@@ -1,7 +1,5 @@
 ---
 title: Chrome Certificate Upload - MacOS
-taxonomy:
-    category: docs
 ---
 
 ### Enabling Chrome Browsers to Accept the NeuVector Self-Signed Certificate on MacOS

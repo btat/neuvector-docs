@@ -1,12 +1,10 @@
 ---
-title: Kubernetes 
-taxonomy:
-    category: docs
+title: Kubernetes
 ---
 
 ### Deploy Using Kubernetes
 
-You can use Kubernetes to deploy separate manager, controller and enforcer containers and make sure that all new nodes have an enforcer deployed. NeuVector requires and supports Kubernetes network plugins such as flannel, weave, or calico. 
+You can use Kubernetes to deploy separate manager, controller and enforcer containers and make sure that all new nodes have an enforcer deployed. NeuVector requires and supports Kubernetes network plugins such as flannel, weave, or calico.
 
 The sample file will deploy one manager and 3 controllers. It will deploy an enforcer on every node as a daemonset. By default, the yaml sample below will deploy to the Master node as well.
 
@@ -56,7 +54,7 @@ $ kubectl label  namespace neuvector "pod-security.kubernetes.io/enforce=privile
 </head>
 <body>
 <div id="full-wrapper">
-  <ul class="dopt-accordion fixed-height arrow-tri">  
+  <ul class="dopt-accordion fixed-height arrow-tri">
 
 <!-- NOTE: Toggle Box #1 -->
 	<input class="title-option" id="acc0" name="accordion-1" type="checkbox" />
@@ -133,7 +131,7 @@ subjects:
 - kind: ServiceAccount
   name: default
   namespace: neuvector</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 </div>
@@ -218,7 +216,7 @@ neuvector-admin                                        28d</code>
 </head>
 <body>
 <div id="full-wrapper">
-  <ul class="dopt-accordion fixed-height arrow-tri">  
+  <ul class="dopt-accordion fixed-height arrow-tri">
 
 <!-- NOTE: Toggle Box #0.9 -->
 	<input class="title-option" id="acc090" name="accordion-1" type="checkbox" />
@@ -257,14 +255,14 @@ spec:
   type: LoadBalancer
   selector:
     app: neuvector-controller-pod</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 </div>
 &nbsp;
 </body>
 </html>
-&nbsp; 
+&nbsp;
 Then create the appropriate service(s):
 <pre>
 <code>
@@ -317,14 +315,14 @@ If you have created your own namespace instead of using “neuvector”, replace
 <!-- seperator -->
   <div class="myspacer">
 
-<!-- NOTE: Set styling for toggle boxes here (theme, arrow style, height, etc.) 
+<!-- NOTE: Set styling for toggle boxes here (theme, arrow style, height, etc.)
     Examples for alternate themes, arrow styles:
-    <ul class="dopt-accordion green fixed-height arrow-tri"> 
+    <ul class="dopt-accordion green fixed-height arrow-tri">
     <ul class="dopt-accordion modern-theme turqoisesh arrow-plus">
     <ul class="dopt-accordion modern-theme cool-blue arrow-img">
-    <ul class="dopt-accordion fixed-height arrow-tri"> 
+    <ul class="dopt-accordion fixed-height arrow-tri">
 -->
-  <ul class="dopt-accordion fixed-height arrow-tri">  
+  <ul class="dopt-accordion fixed-height arrow-tri">
 
 <!-- NOTE: Toggle Box #1 -->
 <li>
@@ -658,7 +656,7 @@ spec:
               - name: CLUSTER_JOIN_ADDR
                 value: neuvector-svc-controller.neuvector
           restartPolicy: Never</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 
@@ -995,7 +993,7 @@ spec:
               - name: CLUSTER_JOIN_ADDR
                 value: neuvector-svc-controller.neuvector
           restartPolicy: Never</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 <!-- NOTE: Toggle Box #2.5 -->
@@ -1330,7 +1328,7 @@ spec:
               - name: CLUSTER_JOIN_ADDR
                 value: neuvector-svc-controller.neuvector
           restartPolicy: Never</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 <!-- NOTE: Toggle Box #3 -->
@@ -1666,12 +1664,12 @@ spec:
               - name: CLUSTER_JOIN_ADDR
                 value: neuvector-svc-controller.neuvector
           restartPolicy: Never</code></pre>
-  </div><!-- End .wrap-content -->    
+  </div><!-- End .wrap-content -->
   </div><!-- End .accordion-content -->
   </li>
 
 <!-- Final closing at end of all accordion boxes -->
-  </div><!-- .myspacer --> 
+  </div><!-- .myspacer -->
 </div><!-- #full-wrapper -->
 </body>
 </html>
@@ -1763,7 +1761,7 @@ spec:
 
 
 ### Using Node Labels for Manager and Controller Nodes
-To control which nodes the Manager and Controller are deployed on, label each node. Replace nodename with the appropriate node name (‘kubectl get nodes’). Note: By default Kubernetes will not schedule pods on the master node. 
+To control which nodes the Manager and Controller are deployed on, label each node. Replace nodename with the appropriate node name (‘kubectl get nodes’). Note: By default Kubernetes will not schedule pods on the master node.
 
 ```
 kubectl label nodes nodename nvcontroller=true
@@ -1800,10 +1798,10 @@ app: neuvector-enforcer-pod
 
 Orchestration tools such as Kubernetes, RedHat OpenShift, and Rancher support rolling updates with configurable policies. You can use this feature to update the NeuVector containers. The most important will be to ensure that there is at least one Allinone/Controller running so that policies, logs, and connection data is not lost. Make sure that there is a minimum of 120 seconds between container updates so that a new leader can be elected and the data synchronized between controllers.
 
-The provided sample deployment yamls already configure the rolling update policy. If you are updating via the NeuVector Helm chart, please pull the latest chart to properly configure new features such as admission control, and delete the old cluster role and cluster role binding for NeuVector. If you are updating via Kubernetes you can manually update to a new version with the sample commands below. 
+The provided sample deployment yamls already configure the rolling update policy. If you are updating via the NeuVector Helm chart, please pull the latest chart to properly configure new features such as admission control, and delete the old cluster role and cluster role binding for NeuVector. If you are updating via Kubernetes you can manually update to a new version with the sample commands below.
 
 
-#### Sample Kubernetes Rolling Update 
+#### Sample Kubernetes Rolling Update
 
 For upgrades which just need to update to a new image version, you can use this simple approach.
 
