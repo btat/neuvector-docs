@@ -4,14 +4,14 @@ taxonomy:
     category: docs
 ---
 
-### Sample Applications 
+### Sample Applications
 After you’ve deployed the NeuVector components you can evaluate it using the sample test applications we provide. These are located in the ’nvbeta’ repository on docker hub.
 
 A typical Kubernetes-based test environment would have a master node and two to three worker nodes. You can control if application pods and NeuVector containers are deployed on a master node (off by default).
 
 
 ### Kubernetes Test Plan
-To deploy a multi-tier application using Nginx, Nodejs, and Redis, use the samples below (in the order below). These may need to be edited for deployment on OpenShift, Rancher and other Kubernetes based tools. 
+To deploy a multi-tier application using Nginx, Nodejs, and Redis, use the samples below (in the order below). These may need to be edited for deployment on OpenShift, Rancher and other Kubernetes based tools.
 
 Create a demo namespace
 ```
@@ -191,7 +191,7 @@ The Kubernetes Guestbook demo application can also be deployed on Kubernetes. It
 ### Docker-native Test Plan
 After deploying the NeuVector components and the sample application(s) you’ll be able to Discover, Monitor and Protect running containers. The test plan below provides suggestions for generating run-time violations of allowed application behavior and scanning containers for vulnerabilities.
 
-[NeuVector Test Plan](testplan.pdf)
+[NeuVector Test Plan](/pdf/09.testing/01.testing/testplan.pdf)
 
 If the link above does not work, you can [download](http://neuvector.com/sample-applications-test-plan/) it from our website using password nv1851blvd.
 
