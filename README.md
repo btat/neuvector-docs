@@ -1,6 +1,9 @@
-# Website
+# NeuVector Docs
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+NeuVector documentation is written in Markdown language and uses [Docusaurus](https://docusaurus.io) to manage the content. 
+A viewable version of these docs can be see at https://open-docs.neuvector.com
+
+## Website
 
 ### Installation
 
@@ -24,18 +27,18 @@ $ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+## License
 
-Using SSH:
+Copyright © 2021-2023 [NeuVector Inc](https://neuvector.com). All Rights Reserved
 
-```
-$ USE_SSH=true yarn deploy
-```
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-Not using SSH:
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

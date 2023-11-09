@@ -8,32 +8,19 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  title: 'NeuVecor',
+  tagline: '',
+  favicon: '/img/favicon.ico',
+  url: 'https://open-docs.neuvector.com',
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
-
+  organizationName: 'neuvector',
+  projectName: 'docs',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
   presets: [
     [
       'classic',
@@ -41,18 +28,13 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/neuvector/docs/edit/main/',
+          routeBasePath: '/', 
+          showLastUpdateTime: true,
+          lastVersion: 'current',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -66,52 +48,91 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: '',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'NeuVector logo',
           src: 'img/logo.svg',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            type: 'search',
             position: 'left',
-            label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            type: 'dropdown',
+            label: 'Quick Links',
             position: 'right',
+            items: [
+              {
+                href: 'https://github.com/neuvector/neuvector',
+                label: 'GitHub',
+              },
+              {
+                href: 'https://github.com/neuvector/docs',
+                label: 'Docs GitHub',
+              },
+            ]
           },
+          {
+            type: 'dropdown',
+            label: 'More from SUSE',
+            position: 'right',
+            items: [
+              {
+                href: 'https://www.rancher.com',
+                label: 'Rancher',
+                className: 'navbar__icon navbar__rancher'
+              },
+              {
+                type: 'html',
+                value: '<hr style="margin: 0.3rem 0;">',
+              },
+              {
+                href: 'https://elemental.docs.rancher.com/',
+                label: 'Elemental',
+                className: 'navbar__icon navbar__elemental'
+              },
+              {
+                href: 'https://epinio.io/',
+                label: 'Epinio',
+                className: 'navbar__icon navbar__epinio'
+              },
+              {
+                href: 'https://fleet.rancher.io/',
+                label: 'Fleet',
+                className: 'navbar__icon navbar__fleet'
+              },
+              {
+                href: 'https://harvesterhci.io',
+                label: 'Harvester',
+                className: 'navbar__icon navbar__harvester'
+              },
+              {
+                type: 'html',
+                value: '<hr style="margin: 0.3rem 0;">',
+              },
+              {
+                href: 'https://opensource.suse.com',
+                label: 'More Projects...',
+                className: 'navbar__icon navbar__suse'
+              },
+            ]
+          }
         ],
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
             title: 'Community',
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://stackoverflow.com/questions/tagged/neuvector',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/neuvector',
               },
             ],
           },
@@ -120,7 +141,7 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                to: '/blog',
+                href: 'https://www.suse.com/c/blog/?product=4549',
               },
               {
                 label: 'GitHub',
@@ -129,7 +150,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} NeuVector by SUSE.`,
       },
       prism: {
         theme: prismThemes.github,
