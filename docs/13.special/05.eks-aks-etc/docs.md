@@ -1,5 +1,5 @@
 ---
-title: Example: Public Cloud K8s EKS, EKS Anywhere, AKS, GKE, IBM ...
+title: "Example: Public Cloud K8s EKS, EKS Anywhere, AKS, GKE, IBM ..."
 taxonomy:
     category: docs
 ---

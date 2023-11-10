@@ -1,5 +1,5 @@
 ---
-title: Modes: Discover, Monitor, Protect
+title: "Modes: Discover, Monitor, Protect"
 taxonomy:
     category: docs
 ---
